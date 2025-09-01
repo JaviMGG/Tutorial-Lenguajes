@@ -116,7 +116,12 @@ console.log(typeof null)        //muestra objeto, no existe un tipo de dato "nul
 //##################################### Operadores #####################################
 /**
  * sirven para hacer operaciones
- * tipos de operadores
+ * tipos de operadores:
+ * Aritméticos (suma,resta,multiplicar, dividir...)
+ * Asignacion (=, +=, -=...)
+ * Comparacion (==, >, <, !=...)
+ * Operadores lógicos (and, or, not...)
+ * Operadores ternarios
  */
 
 
@@ -236,7 +241,6 @@ console.log(nuevoname) //Muestra los textos juntos
 //longitud de un texto
 console.log(nuevoname.length) //Muestra la longitud del texto, los espacios en blanco LOS CUENTA
 
-
 //acceder a caracteres
 console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por el 0
 
@@ -250,16 +254,22 @@ console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por e
  * slices(x, y)     = Devuelve el string desde el elemento que ocupa la posicion x hasta el elemento que ocupa la posicion y
  * replace(x, y)    = Si encuentra la primera palabra (x), la sustituye por la segunda (y)
  */
+
 //toUpperCase()
-console.log(nuevoname.toUpperCase())         
+console.log(nuevoname.toUpperCase())
+        
 //toLowerCase()
-console.log(nuevoname.toLowerCase())         
+console.log(nuevoname.toLowerCase())
+       
 //indexOf()
-console.log(nuevoname.indexOf("llamo"))      
+console.log(nuevoname.indexOf("llamo"))
+      
 //includes()
-console.log(nuevoname.includes("llamo"))     
+console.log(nuevoname.includes("llamo"))
+ 
 //slice(x, y)
-console.log(nuevoname.slice(0, 10))          
+console.log(nuevoname.slice(0, 10))
+          
 //replace("a", "b")
 console.log(nuevoname.replace("yo", "jose")) 
 
@@ -399,25 +409,20 @@ console.log(array) //Muestra [ "hola", "que" ]
 array.push("tal")
 console.log(array) //Muestra [ "hola", "que", "tal" ]
 
-
 //Pop
 array.pop()        
 console.log(array) //Muestra [ "hola", "que" ]
 
-
 //Shift
 console.log(array.shift()) //Muestra "hola"
-
 
 //Unshift
 console.log(array) //Muestra [ "que" ]
 array.unshift("bienvenidos", "de nuevo") 
 console.log(array) //Muestra [ "Bienvenidos", "de nuevo", "que" ]
 
-
 //length
 console.log(array.length)
-
 
 //Clear
 array = []
