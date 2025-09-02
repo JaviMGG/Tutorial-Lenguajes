@@ -34,7 +34,7 @@ console.log(10)          //muestra un numero
 
 
 
-//##################################### Variables #####################################
+//##################################### Variables #######################################################################
 /**
  * tipos de variables:
  * var = forma original de declarar variables, funciona en el ambito del fichero (accesible desde cualquier funcion)
@@ -71,7 +71,7 @@ console.log(helloDayL) ERROR
 
 
 
-//##################################### Tipos de datos #####################################
+//##################################### Tipos de datos #################################################################
 
 /**
  * Datos primitivos: datos basicos, inmutables que representan un valor (los que estan dentro del nucleo)
@@ -116,12 +116,7 @@ console.log(typeof null)        //muestra objeto, no existe un tipo de dato "nul
 //##################################### Operadores #####################################
 /**
  * sirven para hacer operaciones
- * tipos de operadores:
- * Aritméticos (suma,resta,multiplicar, dividir...)
- * Asignacion (=, +=, -=...)
- * Comparacion (==, >, <, !=...)
- * Operadores lógicos (and, or, not...)
- * Operadores ternarios
+ * tipos de operadores
  */
 
 
@@ -210,7 +205,7 @@ console.log(5 > 3 || 3 == 2) //devuelve true si una de las 2 condiciones se cump
 
 /**
  * console.log(5 > 10 && 32 < 12 || 30 < 40) 
- * la primera no se cumple, entonces la and devuelve false, pero la segunda del or, si se cumple
+ * la primera no se cumple, entonces la and devuelve false, pero la segunda del or si se cumple
  * por eso devuelve TRUE
  */
 
@@ -241,6 +236,7 @@ console.log(nuevoname) //Muestra los textos juntos
 //longitud de un texto
 console.log(nuevoname.length) //Muestra la longitud del texto, los espacios en blanco LOS CUENTA
 
+
 //acceder a caracteres
 console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por el 0
 
@@ -254,22 +250,16 @@ console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por e
  * slices(x, y)     = Devuelve el string desde el elemento que ocupa la posicion x hasta el elemento que ocupa la posicion y
  * replace(x, y)    = Si encuentra la primera palabra (x), la sustituye por la segunda (y)
  */
-
 //toUpperCase()
-console.log(nuevoname.toUpperCase())
-        
+console.log(nuevoname.toUpperCase())         
 //toLowerCase()
-console.log(nuevoname.toLowerCase())
-       
+console.log(nuevoname.toLowerCase())         
 //indexOf()
-console.log(nuevoname.indexOf("llamo"))
-      
+console.log(nuevoname.indexOf("llamo"))      
 //includes()
-console.log(nuevoname.includes("llamo"))
- 
+console.log(nuevoname.includes("llamo"))     
 //slice(x, y)
-console.log(nuevoname.slice(0, 10))
-          
+console.log(nuevoname.slice(0, 10))          
 //replace("a", "b")
 console.log(nuevoname.replace("yo", "jose")) 
 
@@ -292,9 +282,9 @@ console.log(`hola, ${name}! tu comida favorita es ${mensaje}`)
 
 /**
  * tres tipos de condicionales:
- * 1- if, else if, else
- * 2- operadores ternarios => (comparacion) ? (si se cumple la comparacion) : (si no se cumple la comparacion)
- * 3- switch 
+ * 1- if, else if, else     => if(condicion){cosa a ejecutar} else if(condicion "secundaria"){cosa a ejecutar} else{cosa a ejecutar si no se cumple las condiciones}
+ * 2- operadores ternarios  => (comparacion) ? (si se cumple la comparacion) : (si no se cumple la comparacion)
+ * 3- switch                => switch(variable que determina los casos){case X: cosa a ejecutar si variable vale X...}
  */
 
 
@@ -355,7 +345,7 @@ console.log(nombreDia)
  * Permiten almacenar varios valores en una sola variable 
  * Tres tipos de estructuras de datos:
  * 1- Arrays
- * 2- 
+ * 2- sets
  * 3-
  */
 
@@ -394,7 +384,8 @@ console.log(array)  //muestra ["Hola", "que", "tal?"]
  * unshift()    = Añade uno o mas elementos AL INICIO DEL ARRAY
  * length()     = Devuelve la longitud del array
  * clear()      = NO SE PUEDE LIMPIAR COMO TAL, HAY QUE DECLARARLA DE NUEVO COMO VACIA
- * 
+ * slice(x,y)   = devuelve los elementos del array que estan desde la posicion x hasta la y SIN INCLUIR LA y
+ * splice(x,y,z)= elimina desde el elemento x un numero de elementos y (si usaramos z, lo añadiria una vez ha borrado)
  */
 array = []
 
@@ -409,21 +400,63 @@ console.log(array) //Muestra [ "hola", "que" ]
 array.push("tal")
 console.log(array) //Muestra [ "hola", "que", "tal" ]
 
+
 //Pop
 array.pop()        
 console.log(array) //Muestra [ "hola", "que" ]
 
+
 //Shift
 console.log(array.shift()) //Muestra "hola"
 
+
 //Unshift
-console.log(array) //Muestra [ "que" ]
+console.log(array)  //Muestra [ "que" ]
 array.unshift("bienvenidos", "de nuevo") 
-console.log(array) //Muestra [ "Bienvenidos", "de nuevo", "que" ]
+console.log(array)  //Muestra [ "Bienvenidos", "de nuevo", "que" ]
+
 
 //length
 console.log(array.length)
 
+
 //Clear
-array = []
+array = []          //ahora array vale [] (está vacía)
+array.length = 0    //otra forma de vaciarla pero menos convencional
 console.log(array)
+
+
+//slice
+let miArray = [1,2,3,4,5]
+let miNuevaArray = miArray.slice(1,3)   //miNuevaArray será el resultado de coger de miArray los elementos de la posicion 1 hasta la 3 (sin incluir la 3), si valieran lo mismo, devuelve []
+console.log(miNuevaArray)               //devuelve [ 2, 3 ]
+
+//splice
+miArray = [1,2,3,4,5]
+
+//con dos argumentos
+let miNuevaArray2 = miArray.splice(0,2) //empieza en el elemento 1, a partir de el, dice CUANTOS QUIERE BORRAR, en este caso 2
+console.log(miNuevaArray2)              //devuelve [ 1, 2 ]
+
+//con tres argumentos
+let miTercerNuevoArray = miArray.splice(0,2,5)       //el tercer argumento se añade despues de borrar los dos anteriores
+console.log(miTercerNuevoArray)                      //deberia mostrar el array con el argumento "5" añadido
+
+
+//sets
+let nuevoSet = new Set() //set vacia
+let nuevoSet2 = {}   //ESTO NO ES UN SET
+
+//si queremos mostrar solo del primer elemento
+nuevoSet = new Set("Buenos", "dias", "a", "todos")
+console.log(nuevoSet)   //muestra el numero de elementos de la PRIMERA PALABRA, Set(6) { 'B', 'u', 'e', 'n', 'o', 's' }
+
+//si queremos mostrar todos los elementos del Set
+nuevoSet = new Set(["Buenos", "dias", "a", "todos"])
+console.log(nuevoSet)   //muestra: Set(4) {"buenos", "dias", "a", "todos"}
+
+//Metodos comunes en Sets
+/**
+ * (falta por acabar)
+ * 
+ */
