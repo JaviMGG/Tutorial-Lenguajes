@@ -37,9 +37,11 @@ console.log(10)          //muestra un numero
 //##################################### Variables #######################################################################
 /**
  * tipos de variables:
+ * ------------------------------------------------------------------------
  * var = forma original de declarar variables, funciona en el ambito del fichero (accesible desde cualquier funcion)
  * let = accesibles dentro de un bloque (dentro de una funcion)
  * const = accesibles dentro de un bloque (dentro de una funcion), PERO SU VALOR ES CONSTANTE, NO SE PUEDE CAMBIAR
+ * ------------------------------------------------------------------------
  * 
  * EN TODAS HAY QUE HACER "lower Camel Case": cada nueva palabra de la variable, EMPIEZA POR MAYUSCULA: var holaMundoDias
  */
@@ -75,7 +77,15 @@ console.log(helloDayL) ERROR
 
 /**
  * Datos primitivos: datos basicos, inmutables que representan un valor (los que estan dentro del nucleo)
- * 7 tipos de datos:
+ * Siete tipos de datos:
+ * ------------------------------------------------------------------------
+ * String
+ * Numeros
+ * Booleanos
+ * Indefinido
+ * Nulo
+ * Símbolo
+ * BigInt
  */
 
 //String (textos)
@@ -116,7 +126,13 @@ console.log(typeof null)        //muestra objeto, no existe un tipo de dato "nul
 //##################################### Operadores #####################################
 /**
  * sirven para hacer operaciones
- * tipos de operadores
+ * tipos de operadores:
+ * ------------------------------------------------------------
+ * Aritmeticos          (suma, resta, multiplicar, dividir...)
+ * Asignacion           (+=, -=, *=, /=, ...)
+ * Comparacion          (=, >=, <=, >, <, !=, ...)
+ * Operadores Lógicos   (and, or, not, ...)
+ * Operadores Ternarios (... ? ... : ...)
  */
 
 
@@ -154,11 +170,10 @@ variable **=2               //variable = variable ** 2
 
 
 //Comparacion
-
-//compara el valor de "uno" y "dos" y devuelve un booleano
 let uno = 1 
 let dos = 2
 
+//compara el valor de "uno" y "dos" y devuelve un booleano
 console.log(uno > dos )        //devuelve false
 console.log(uno >= dos)        //devuelve false
 console.log(uno < dos )        //devuelve true
@@ -177,14 +192,16 @@ console.log(0 == "viva")       //devuelve false
 console.log(undefined == null) //devuelve false
 
 /**
- * //Truthy values (valores verdaderos)
+ * Truthy values (valores verdaderos)
+ * ------------------------------------
  * todos los numeros positivos y negativos menos el 0
  * todas las cadenas de texto menos las ""
  * el boolean true
  */
 
 /**
- * //Falsy values (valores falsos)
+ * Falsy values (valores falsos)
+ * ------------------------------------
  * 0
  * 0n
  * null
@@ -213,9 +230,8 @@ console.log(5 > 3 || 3 == 2) //devuelve true si una de las 2 condiciones se cump
 console.log(!true)  // !true es lo mismo que FALSE
 console.log(!false) // !false es lo mismo que True
 
-//Operadores ternarios
-
 /**
+ * Operadores ternarios:
  * permiten escribir condiciones (similar a escribir ifs)
  * accedemos a la variable que queremos comprobar/inspeccionar
  * se escribe asi:
@@ -240,16 +256,17 @@ console.log(nuevoname.length) //Muestra la longitud del texto, los espacios en b
 //acceder a caracteres
 console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por el 0
 
-//metodos mas comunes:
 /**
  * Metodos más comunes:
- * toUpperCase()    = Transforma todas las letras en mayuscula
- * toLowerCase()    = Transforma todas las letras en minúscula
- * indexOf("")      = Saca la posicion de lo que hay en el parentesis, si no lo encuentra, devuelve -1
- * includes("")     = Devuelve true si lo que hay en el parentesis está en el String, false en caso contrario
- * slices(x, y)     = Devuelve el string desde el elemento que ocupa la posicion x hasta el elemento que ocupa la posicion y
- * replace(x, y)    = Si encuentra la primera palabra (x), la sustituye por la segunda (y)
+ * -------------------------------------------------------------
+ * toUpperCase()    => Transforma todas las letras en mayúscula
+ * toLowerCase()    => Transforma todas las letras en minúscula
+ * indexOf("")      => Saca la posicion de lo que hay en el parentesis, si no lo encuentra, devuelve -1
+ * includes("")     => Devuelve true si lo que hay en el parentesis está en el String, false en caso contrario
+ * slices(x, y)     => Devuelve el string desde el elemento que ocupa la posicion x hasta el elemento que ocupa la posicion y
+ * replace(x, y)    => Si encuentra la primera palabra (x), la sustituye por la segunda (y)
  */
+
 //toUpperCase()
 console.log(nuevoname.toUpperCase())         
 //toLowerCase()
@@ -281,7 +298,8 @@ console.log(`hola, ${name}! tu comida favorita es ${mensaje}`)
 //########################## Condicionales (estructuras de control) ##########################################
 
 /**
- * tres tipos de condicionales:
+ * Tres tipos de condicionales:
+ * ------------------------------------------------------------------------
  * 1- if, else if, else     => if(condicion){cosa a ejecutar} else if(condicion "secundaria"){cosa a ejecutar} else{cosa a ejecutar si no se cumple las condiciones}
  * 2- operadores ternarios  => (comparacion) ? (si se cumple la comparacion) : (si no se cumple la comparacion)
  * 3- switch                => switch(variable que determina los casos){case X: cosa a ejecutar si variable vale X...}
@@ -344,6 +362,7 @@ console.log(nombreDia)
 /**
  * Permiten almacenar varios valores en una sola variable 
  * Tres tipos de estructuras de datos:
+ * -----------------------------------
  * 1- Arrays
  * 2- sets
  * 3-
@@ -376,8 +395,10 @@ array[2] = "tal?"   //si cambiamos el valor de los [], cambia la posicion de los
 console.log(array)  //muestra ["Hola", "que", "tal?"]
 
 
-//Metodos comunes en Arrays
+//
 /**
+ * Metodos comunes en Arrays:
+ * ------------------------------------------------------------------------
  * push()       = AÑADE AL FINAL DEL ARRAY LO QUE HAYA ENTRE PARENTESIS ()
  * pop()        = ELIMINA EL ULTIMO ELEMENTO DEL ARRAY
  * shift()      = Elimina el primer elemento del array Y LO DEVUELVE
@@ -386,6 +407,7 @@ console.log(array)  //muestra ["Hola", "que", "tal?"]
  * clear()      = NO SE PUEDE LIMPIAR COMO TAL, HAY QUE DECLARARLA DE NUEVO COMO VACIA
  * slice(x,y)   = devuelve los elementos del array que estan desde la posicion x hasta la y SIN INCLUIR LA y
  * splice(x,y,z)= elimina desde el elemento x un numero de elementos y (si usaramos z, lo añadiria una vez ha borrado)
+ * 
  */
 array = []
 
