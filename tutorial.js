@@ -252,7 +252,6 @@ console.log(nuevoname) //Muestra los textos juntos
 //longitud de un texto
 console.log(nuevoname.length) //Muestra la longitud del texto, los espacios en blanco LOS CUENTA
 
-
 //acceder a caracteres
 console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por el 0
 
@@ -268,15 +267,20 @@ console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por e
  */
 
 //toUpperCase()
-console.log(nuevoname.toUpperCase())         
+console.log(nuevoname.toUpperCase())  
+       
 //toLowerCase()
 console.log(nuevoname.toLowerCase())         
+
 //indexOf()
 console.log(nuevoname.indexOf("llamo"))      
+
 //includes()
 console.log(nuevoname.includes("llamo"))     
+
 //slice(x, y)
 console.log(nuevoname.slice(0, 10))          
+
 //replace("a", "b")
 console.log(nuevoname.replace("yo", "jose")) 
 
@@ -364,12 +368,12 @@ console.log(nombreDia)
  * Tres tipos de estructuras de datos:
  * -----------------------------------
  * 1- Arrays
- * 2- sets
- * 3-
+ * 2- Sets
+ * 3- Maps
  */
 
 
-//Array
+//1- Array
 let arrayVacia = []     //Array vacia
 let array = new Array() //Array vacia
 
@@ -395,7 +399,6 @@ array[2] = "tal?"   //si cambiamos el valor de los [], cambia la posicion de los
 console.log(array)  //muestra ["Hola", "que", "tal?"]
 
 
-//
 /**
  * Metodos comunes en Arrays:
  * ------------------------------------------------------------------------
@@ -403,7 +406,7 @@ console.log(array)  //muestra ["Hola", "que", "tal?"]
  * pop()        = ELIMINA EL ULTIMO ELEMENTO DEL ARRAY
  * shift()      = Elimina el primer elemento del array Y LO DEVUELVE
  * unshift()    = Añade uno o mas elementos AL INICIO DEL ARRAY
- * length()     = Devuelve la longitud del array
+ * length       = Devuelve la longitud del array
  * clear()      = NO SE PUEDE LIMPIAR COMO TAL, HAY QUE DECLARARLA DE NUEVO COMO VACIA
  * slice(x,y)   = devuelve los elementos del array que estan desde la posicion x hasta la y SIN INCLUIR LA y
  * splice(x,y,z)= elimina desde el elemento x un numero de elementos y (si usaramos z, lo añadiria una vez ha borrado)
@@ -422,31 +425,25 @@ console.log(array) //Muestra [ "hola", "que" ]
 array.push("tal")
 console.log(array) //Muestra [ "hola", "que", "tal" ]
 
-
 //Pop
 array.pop()        
 console.log(array) //Muestra [ "hola", "que" ]
 
-
 //Shift
 console.log(array.shift()) //Muestra "hola"
-
 
 //Unshift
 console.log(array)  //Muestra [ "que" ]
 array.unshift("bienvenidos", "de nuevo") 
 console.log(array)  //Muestra [ "Bienvenidos", "de nuevo", "que" ]
 
-
 //length
 console.log(array.length)
-
 
 //Clear
 array = []          //ahora array vale [] (está vacía)
 array.length = 0    //otra forma de vaciarla pero menos convencional
 console.log(array)
-
 
 //slice
 let miArray = [1,2,3,4,5]
@@ -465,9 +462,9 @@ let miTercerNuevoArray = miArray.splice(0,2,5)       //el tercer argumento se a�
 console.log(miTercerNuevoArray)                      //deberia mostrar el array con el argumento "5" añadido
 
 
-//sets
-let nuevoSet = new Set() //set vacia
-let nuevoSet2 = {}   //ESTO NO ES UN SET
+//2- Sets
+let nuevoSet = new Set() //Set vacia
+let nuevoSet2 = {}       //ESTO NO ES UN SET
 
 //si queremos mostrar solo del primer elemento
 nuevoSet = new Set("Buenos", "dias", "a", "todos")
@@ -477,8 +474,123 @@ console.log(nuevoSet)   //muestra el numero de elementos de la PRIMERA PALABRA, 
 nuevoSet = new Set(["Buenos", "dias", "a", "todos"])
 console.log(nuevoSet)   //muestra: Set(4) {"buenos", "dias", "a", "todos"}
 
-//Metodos comunes en Sets
+
 /**
- * (falta por acabar)
+ * Metodos comunes en Sets:
+ * ------------------------------------------------------------------------
+ * add("X")        = añadir al set lo que hay en el parentesis AL FINAL
+ * delete("X")     = hay que indicar el elemento que hay que borrar (NO HAY QUE PASARLE EL INDICE)
+ * has("X")        = comprueba si hay algun elemento, devuelve true si existe el elemento entre parentesis
+ * size            = tamaño del Set
+ * Array.from(Y)   = transformar el Set Y en una ARRAY
+ * new Set(Y)      = transforma el ARRAY Y en un Set nuevo/lo modifica
  * 
  */
+
+
+
+//Add
+nuevoSet.add("holamundo")
+console.log(nuevoSet)
+
+//Delete
+nuevoSet.delete("holamundo")    //devuelve un booleano si el elemento existe y se ha borrado correctamente
+console.log(nuevoSet)
+
+/**
+ * se podria hacer:
+ * if(nuevoSet.delete("holamundo")){
+ *      console.log("elemento borrado")
+ * }
+ * else{
+ *      console.log("elemento no borrado")
+ * }
+ */
+
+//Has
+let tieneDias = nuevoSet.has("dias")    //devuelve true si "dias" está en nuevoSet
+console.log(tieneDias)
+
+//Size
+console.log("tamaño del set actual: " + nuevoSet.size)
+
+//Convertir de Set a Array
+let nuevaArray = Array.from(nuevoSet)
+console.log(nuevaArray) //MUESTRA UN ARRAY con los elementos del SET
+
+//Convertir de Array a Set
+nuevoSet2 = new Set(nuevaArray)
+console.log(nuevoSet2)  //MUESTRA UN SET con los elementos del ARRAY (anterior)
+
+//NO admite duplicados
+nuevoSet.add("dias")    //COMO YA EXISTE, NO SE MODIFICA
+console.log(nuevoSet)
+
+
+//3- Map
+let miMapa = new Map()  //Mapa VACIO
+
+//Inicializar, CADA ELEMENTO ESTÁ FORMADO POR UN PAR: CLAVE Y VALOR
+miMapa = new Map([
+    ["Nombre","Paco"],
+    ["Edad", 24],
+    ["Altura", 2.00] //si quisiera añadir más, habria que poner una , y después otro par de elementos en []
+])
+console.log(miMapa)
+
+
+/**
+ * Metodos comunes en Maps:
+ * ------------------------------------------------------------------------
+ * set(C, V)        = añade un elemento al mapa SI LA Clave es DISTINTA, SI ES IGUAL, LO SUSTITUYE
+ * get(C)           = devuelve el Valor asociado a la Clave, SI NO EXISTE LA CLAVE, devuelve UNDEFINED
+ * has(C)           = devuelve True si la Clave existe en el mapa, False en caso contrario
+ * delete(C)        = Elimina el par de elementos que tenga la Clave 
+ * clear()          = Vacia todo el mapa
+ * keys()           = Devuelve las Claves del mapa
+ * values()         = Devuelve los Valores del mapa 
+ * size             = Tamaño del mapa
+ * entries()        = Devuelve TODO EL MAPA, Claves y Valores
+ * 
+ */
+
+
+//Set
+miMapa.set("pais", "España")
+console.log(miMapa)         //se habrá añadido el nuevo par de elementos
+
+//Get
+let valorEscogido = miMapa.get("pais")
+console.log(valorEscogido)  //devuelve en este caso "España"
+
+//Has
+let existeClave = miMapa.has("pais")
+console.log(existeClave)    //devuelve true porque la clave "pais" existe
+
+//Delete
+miMapa.delete("pais")
+console.log(miMapa)         //se habrá borrado la clave "pais" y su valor correspondiente
+
+//Clear
+miMapa.clear()
+console.log(miMapa)         //mapa vaciado
+
+//Keys
+//(añadimos valores porque no se puede interactuar con un mapa vacio (el resultado no se mostraria))
+miMapa.set("pais", "España")
+miMapa.set("idioma", "Valenciano")
+
+let misClaves = miMapa.keys()
+console.log(misClaves)      //devuelve una lista con las claves
+
+//Values
+let misValores = miMapa.values()
+console.log(misValores)     //devuelve una lista con los valores
+
+//Size
+let miTamaño = miMapa.size
+console.log(miTamaño)       //tamaño del array, en este caso 2
+
+//Entries
+let todoElMapa = miMapa.entries()
+console.log(todoElMapa)     //todo el mapa es mostrado
