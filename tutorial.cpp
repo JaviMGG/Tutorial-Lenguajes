@@ -1,3 +1,4 @@
+//Autor: JaviMGG
 #include <iostream>
 #include <string>
 
@@ -36,55 +37,38 @@ void funcionDeInsercionYExtraccion(){
 
 //############################################ TIPO DE DATOS Y CONVERSION DE TIPOS ##################################################
 
-void funcionDeTipos(){
+void funcionDeTipos() {
+    // ENTEROS (int)
+    int x = 0;
 
-//ENTEROS (int)
-int x = 0;
+    // REALES (double)
+    double y = 1.0;
 
-//REALES (double)
-double y = 1.0;
+    // BOOLEANOS (bool)
+    bool z = true;
 
-//BOOLEANOS (bool)
-bool z = true;
+    // FLOAT (float)
+    float f = 22220;
 
-//FLOAT (float)
-float f = 22220;
+    // CARÁCTERES (char)
+    char c = 'c';
 
-//CARÁCTERES (char)
-char c = 'c';
+    // TEXTOS (string)
+    std::string s = "Hola";
 
-//TEXTOS (string)
-std::string s = "Hola";
+    // DATOS CONSTANTES (const)
+    const double pi = 3.14;
 
-/** 
- * SI EXISTIERA PREVIAMENTE EL "using namespace std"
- * habria que poner:
- * string s = "Hola";
-*/
+    // Conversion de tipos
+    double primera = 3.4;
+    std::cout << "valor de primera en double: " << primera << std::endl;
+    int segunda = static_cast<int>(primera);
+    std::cout << "valor de primera en int: " << segunda << std::endl;
 
-//DATOS CONSTANTES (const)
-const double pi = 3.14;
-/*al poner el "const" delante, SOLAMENTE ES DE LECTURA, no se puede editar*/
-
-
-//Conversion de tipos
-
-//con los numeros
-double primera = 3.4;
-std::cout << "valor de primera en double: " << primera << std::endl;
-int segunda = (int) primera;
-std::cout << "valor de primera en int: " << segunda << std::endl;
-
-//con los chars
-int caracter = 100;
-std::cout << "valor de la variable caracter: " << caracter << std::endl;
-char caracterReal = (char) caracter;
-std::cout << "valor de la variable caracter EN LA TABLA ASCII (el valor que le corresponde): " << caracterReal << std::endl;
-
-
-
-
-//NO PUEDEN HABER 2 VARIABLES CON EL MISMO NOMBRE Y DISTINTO VALOR, solamente se puede con un NAMESPACE
+    int caracter = 100;
+    std::cout << "valor de la variable caracter: " << caracter << std::endl;
+    char caracterReal = static_cast<char>(caracter);
+    std::cout << "valor de la variable caracter EN LA TABLA ASCII: " << caracterReal << std::endl;
 }
 
 
@@ -251,6 +235,59 @@ bool pruebaNOT(){
 
 
 
+
+//############################################ STRING Y ALGUNOS DE SUS METODOS ##################################################
+
+/**
+ * Metodos:
+ * ------------------------------------------------------------------------
+ * length()			=> longitud del String/texto, cuenta los caracteres Y LOS ESPACION EN BLANCO
+ * empty()			=> Devuelve 1 (TRUE) si la cadena de texto está vacia, 0 (FALSE) en caso contrario
+ * clear()			=> Vacia la cadena de texto
+ * append("X")		=> Añade "X" a la cadena de texto. ES UTIL cuando queremos que una persona SE REGISTRE
+ * at(X)			=> Devuelve lo que hay en la posicion X de la cadena de texto
+ * insert(2, "X")	=> Inserta en la posicion 2 el caracter "X" 
+ * find("X")		=> Devuelve la primera posicion del caracter "X"
+ * erase(x, y)		=> elimina de la cadena de texto lo que hay desde x hasta y, si Y vale -1, irá hasta el final
+ * 
+*/
+
+void funcionStrings(){
+	using namespace std;
+	string nombre;
+
+	nombre = "Juan";
+
+	//length
+	int longitud = nombre.length();	
+	
+	//empty
+	bool vacia = nombre.empty();		//devuelve 0 porque "Nombre" NO ESTÁ VACIA
+	
+	//clear
+	nombre.clear();
+
+	//append
+	nombre.append("Alberto");			//ahora nombre vale "Alberto"
+
+	//at
+	char x = nombre.at(2);				//devuelve "a"
+
+	//insert
+	nombre.insert(0, "Dia");			//ahora nombre vale "DiaAlberto"
+
+	//find
+	int posicion = nombre.find("berto");
+	//cout << "la posicion primera de berto es " << posicion << endl;
+
+	//erase
+	nombre.erase(5, -1);
+	//cout << nombre;
+
+}
+
+
+
 //############################################ FUNCIONES ÚTILES EN C++ ##################################################
 
 /**
@@ -266,25 +303,41 @@ bool pruebaNOT(){
  * round(x)			=> aproxima x (hace ponderacion/redondea)
  * ceil(x)			=> redondear x hacia arriba
  * floor(x)			=> redondear x hacia abajo
+ * 
+ * libreria time	=> #include <ctime>
+ * algunos de sus metodos:
+ * 
+ * randomizar numeros
+ * 
 */
 
+#include <ctime> //las librerias NO PUEDEN IR DENTRO DE METODOS
+
 void funcionesVarias(){
-	#include <cmath>
+	//#include <cmath>
 	double x = 2.6;
 	double y = 3;
 	double z;
+	using namespace std;
+	/**
+	 * z = std::max(x,y);
+	 * z = std::min(x,y);
+	 * z = pow(x,y);
+	 * z = sqrt(x);
+	 * z = abs(x);
+	 * z = round(3.65);
+	*/
+	srand(time(NULL));
 
-	z = std::max(x,y);
-	z = std::min(x,y);
-	z = pow(x,y);
-	z = sqrt(x);
-	z = abs(x);
-	z = round(3.65);
+	int numRandom = rand();	//numero muy grande
+	int dado = rand() % 6;	//tocará desde 0 hasta 6, si fuera desde 1 hasta 6, habria que sumarle a todo 1
+	cout << dado << endl;
 }
 
 
 
 //############################################ CONDICIONALES  ##################################################
+
 /**
 Tres tipos de condicionales:
  * ------------------------------------------------------------------------
@@ -327,8 +380,7 @@ void funcionCondicionales(){
 	}
 
 	//Operador ternario
-	cout << "Escribe de nuevo tu edad, que se me ha olvidado" << endl;
-	int edad; 
+	cout << "Escribe de nuevo tu edad, que se me ha olvidado" << endl; 
 	cin >> edad;
 	string VerificarEdad = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
 	cout << VerificarEdad;
@@ -337,12 +389,57 @@ void funcionCondicionales(){
 
 
 
+//############################################ BUCLES ##################################################
+
+/**
+  * Tres tipos de bucles:
+  * ------------------------------------------------------------------------
+  * for                      => for(desde donde comienzo; cuando pararé; como avanzo)
+  * while                    => desde donde comienzo; while(condicion de parada){... como avanzo}
+  * do while                 => desde donde comienzo; do {...como avanzo}while(condicion de parada) 
+  * ------------------------------------------------------------------------
+  * IMPORTANTE: 
+  * el bucle do{}while(); SI QUE SE EJECUTA AL MENOS UNA VEZ, 
+  * EL bucle while(){} SI INICIALMENTE NO CUMPLE LA CONDICION, NO SE EJECUTA, el do{}while(); SI
+*/
+
+void funcionBucles(){
+	using namespace std;
+	//for
+	for (int i = 0; i < 10; i++){
+		std::cout << i << std::endl;
+		/* code */
+	}
+	
+	//while
+	int i = 0;
+	while (i < 10){
+		cout << i << endl;
+		i++;
+	}
+
+	i = 0;
+	do{
+		cout << i << endl;
+		i++;
+	} while (i < 10);
+
+}
+
 //############################################ FUNCION MAIN y LLAMADA A METODOS ##################################################
+
+/**
+ * POR DEFECTO, C++ LO LEE TODO DE ARRIBA A ABAJO, es decir, el main DEBE ESTAR ABAJO DEL TODO
+ * Ahora bien, si arriba de main declaramos la funcion con un ; al final, el main BUSCARÁ LA FUNCION, es decir, "mirará" en todas direcciones
+ */
+void funcionNueva();
+
+int suma(int x, int y);
 
 int main() {
 	int x; //declaracion
 	x = 0; //asignacion
-
+	/** 
 	funcionDeTipos();
 	funcionNamespace();
 	pruebaAritmeticosSUMA();
@@ -350,8 +447,25 @@ int main() {
 	pruebaAritmeticosMULTIPLICAR();
 	pruebaAritmeticosDIVIDIR();
 	pruebaAritmeticosMODULO();
-	
-	
+	*/
+	funcionStrings();
+	funcionesVarias();
+	funcionNueva();		//esta funcion si se ejecutara por estar declarada arriba
+	//funcionNueva2();	//esta funcion NO se ejecutara
+	int a = 1, b = 2, c;
+	c = suma(a, b);
+	std::cout << "la suma de " << a << " y " << b << ": " << c;
 	return 0; //al ser una funcion int, tiene que devolver un entero, las funciones VOID NO NECESITAN EL RETURN
 }
 
+void funcionNueva(){
+	std::cout << "Adios"<< std::endl;
+}
+
+void funcionNueva2(){
+	std::cout << "AdiosMundoCruel";
+}
+
+int suma(int x, int y){
+	return x + y;
+}
