@@ -14,7 +14,7 @@
  * Javascript es de tipado dinamico = en el futuro puedo cambiar la variable de int a String (por ejemplo)
  * 
  * Javascript sirve para crear cualquier tipo de software (backend, apps moviles, aplicaciones de escritorio...)
- */
+*/
 
 //ANOTACION= MOTOR V8: motor para interpretar y ejecutar javascript (creado por GOOGLE)
 //NodeJS es un entorno de ejecucion sin necesidad de tener un entorno web
@@ -35,6 +35,7 @@ console.log(10)          //muestra un numero
 
 
 //##################################### Variables #######################################################################
+
 /**
  * tipos de variables:
  * ------------------------------------------------------------------------
@@ -44,7 +45,7 @@ console.log(10)          //muestra un numero
  * ------------------------------------------------------------------------
  * 
  * EN TODAS HAY QUE HACER "lower Camel Case": cada nueva palabra de la variable, EMPIEZA POR MAYUSCULA: var holaMundoDias
- */
+*/
 
 var helloDay = "hola dia"
 console.log(helloDay) //mostrará "hola dia"
@@ -86,7 +87,7 @@ console.log(helloDayL) ERROR
  * Nulo
  * Símbolo
  * BigInt
- */
+*/
 
 //String (textos)
 let nombre = "Pepito"
@@ -124,6 +125,7 @@ console.log(typeof null)        //muestra objeto, no existe un tipo de dato "nul
 
 
 //##################################### Operadores #####################################
+
 /**
  * sirven para hacer operaciones
  * tipos de operadores:
@@ -133,7 +135,7 @@ console.log(typeof null)        //muestra objeto, no existe un tipo de dato "nul
  * Comparacion          (=, >=, <=, >, <, !=, ...)
  * Operadores Lógicos   (and, or, not, ...)
  * Operadores Ternarios (... ? ... : ...)
- */
+*/
 
 
 //Aritmeticos (suma, resta, multiplicar, dividir...)
@@ -197,7 +199,7 @@ console.log(undefined == null) //devuelve false
  * todos los numeros positivos y negativos menos el 0
  * todas las cadenas de texto menos las ""
  * el boolean true
- */
+*/
 
 /**
  * Falsy values (valores falsos)
@@ -209,7 +211,7 @@ console.log(undefined == null) //devuelve false
  * NaN
  * el boolean false
  * cadenas de texto vacias ("")
- */
+*/
 
 
 //Operadores lógicos
@@ -224,7 +226,7 @@ console.log(5 > 3 || 3 == 2) //devuelve true si una de las 2 condiciones se cump
  * console.log(5 > 10 && 32 < 12 || 30 < 40) 
  * la primera no se cumple, entonces la and devuelve false, pero la segunda del or si se cumple
  * por eso devuelve TRUE
- */
+*/
 
 //not (!)
 console.log(!true)  // !true es lo mismo que FALSE
@@ -236,7 +238,8 @@ console.log(!false) // !false es lo mismo que True
  * accedemos a la variable que queremos comprobar/inspeccionar
  * se escribe asi:
  * (variable) ? (condicion si se cumple) : (condicion si no se cumple)
- */
+*/
+
 const estaVivo = true
 estaVivo ? console.log("está vivo") : console.log("está muerto")
 
@@ -264,7 +267,7 @@ console.log(nuevoname[3]) //Accedo al carácter en la posicion 2 empezando por e
  * includes("")     => Devuelve true si lo que hay en el parentesis está en el String, false en caso contrario
  * slices(x, y)     => Devuelve el string desde el elemento que ocupa la posicion x hasta el elemento que ocupa la posicion y
  * replace(x, y)    => Si encuentra la primera palabra (x), la sustituye por la segunda (y)
- */
+*/
 
 //toUpperCase()
 console.log(nuevoname.toUpperCase())  
@@ -307,7 +310,7 @@ console.log(`hola, ${name}! tu comida favorita es ${mensaje}`)
  * 1- if, else if, else     => if(condicion){cosa a ejecutar} else if(condicion "secundaria"){cosa a ejecutar} else{cosa a ejecutar si no se cumple las condiciones}
  * 2- operadores ternarios  => (comparacion) ? (si se cumple la comparacion) : (si no se cumple la comparacion)
  * 3- switch                => switch(variable que determina los casos){case X: cosa a ejecutar si variable vale X...}
- */
+*/
 
 
 //if, else if, else
@@ -370,7 +373,7 @@ console.log(nombreDia)
  * 1- Arrays
  * 2- Sets
  * 3- Maps
- */
+*/
 
 
 //1- Array
@@ -411,7 +414,7 @@ console.log(array)  //muestra ["Hola", "que", "tal?"]
  * slice(x,y)   = devuelve los elementos del array que estan desde la posicion x hasta la y SIN INCLUIR LA y
  * splice(x,y,z)= elimina desde el elemento x un numero de elementos y (si usaramos z, lo añadiria una vez ha borrado)
  * 
- */
+*/
 array = []
 
 
@@ -485,8 +488,7 @@ console.log(nuevoSet)   //muestra: Set(4) {"buenos", "dias", "a", "todos"}
  * Array.from(Y)   = transformar el Set Y en una ARRAY
  * new Set(Y)      = transforma el ARRAY Y en un Set nuevo/lo modifica
  * 
- */
-
+*/
 
 
 //Add
@@ -505,7 +507,7 @@ console.log(nuevoSet)
  * else{
  *      console.log("elemento no borrado")
  * }
- */
+*/
 
 //Has
 let tieneDias = nuevoSet.has("dias")    //devuelve true si "dias" está en nuevoSet
@@ -552,7 +554,7 @@ console.log(miMapa)
  * size             = Tamaño del mapa
  * entries()        = Devuelve TODO EL MAPA, Claves y Valores
  * 
- */
+*/
 
 
 //Set
@@ -593,4 +595,79 @@ console.log(miTamaño)       //tamaño del array, en este caso 2
 
 //Entries
 let todoElMapa = miMapa.entries()
-console.log(todoElMapa)     //todo el mapa es mostrado
+console.log(todoElMapa)     //se muestra TODO el mapa 
+
+
+
+//########################## Funciones ##########################################
+
+//nombre de una funcion TAMBIEN es un puntero a dicha funcion 
+
+//declaracion normal
+function name(params) {
+    //...
+}
+
+//declaracion lambda
+() => {/*...*/}
+
+//funcion anonima
+
+//las funciones pueden ser el valor de variables
+let variableNueva = function name(params) {}
+
+//si creamos una funcion y al invocarla, tenemos MENOS PARAMETROS de los permitidos, devuelve NaN
+function suma(x, y){
+    return x + y
+}
+console.log(suma(1))    //devuelve NaN
+
+//si creamos una funcion y al invocarla, tenemos MENOS PARAMETROS de los permitidos PERO al declarar la funcion, los parametros valen 0, funciona
+function suma2(x, y=0) {
+    return x + y
+}
+console.log(suma(1))    //devuelve 1
+
+//si creamos una funcion y al invocarla, tenemos MÁS PARAMETROS de los permitidos, ignora los que sobra (si hay 3 parametros, coge los 3 primeros)
+function sumaTriple(x,y,z){
+    return x + y + z
+}
+console.log(sumaTriple(1,2,3,4,5,6))    //devuelve 6 (3+2+1)
+
+//dentro de una funcion se puede usar el termino "arguments" a pesar de que no tenga
+function saluda() {
+    for (let i = 0; i < arguments.length; i++){
+        console.log("hola " + arguments[i])
+    }
+}
+saluda("jose", "pepe", "ramon")
+
+
+//ambitos de variables en funciones
+let global = "esta variable es global"
+function funcion1(){
+    tambienGlobal = "esta es tambien global"
+    let noGlobal = "esta NO ES GLOBAL, es local por ser let"
+    function funcion2(){
+        alert(noGlobal)
+        todaviaGlobal = "esta es global"
+        let privada = "esta variable es local y privada para la funcion2"
+    }
+}
+
+//"Acumulacion de funciones"
+x = suma(suma(1,2),3)   
+console.log(x)          //devuelve 3
+
+//Timeout
+
+/**
+ * setTimeout(func, ms, arg1, arg2)
+ * ---------------------------------------------------------------
+ * func = funcion a ejecutar dentro de al menos despues de 'ms' milisegundos. 
+ *      - La funcion se deja al final de la cola de eventos cuando hayan transcurrido 'ms' milisegundos.
+ * 
+*/
+
+//la funcion va a final de la cola de espera
+setTimeout(funcion1,3,2,1)
