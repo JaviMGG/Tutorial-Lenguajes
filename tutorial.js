@@ -913,7 +913,9 @@ function process() { //ahora es sincrona
 
 //funcion auxiliar que usa una promesa para ejecutar un setTimeout para esperar ms segundos
 function wait(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))}
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 
 async function process2() { //ahora es asincrona
 
