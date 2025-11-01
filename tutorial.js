@@ -712,6 +712,24 @@ console.log(cuenta.balance) //mostrará 20
 
 
 
+//########################## Event loop ##########################################
+
+/**
+ * Componentes del Event loop
+ * 1- Call Stack (pila de ejecución)
+ * 2- Web APIs (Apis del navegador) o node.js = setTimeout()...
+ * 3- Task Queue (Cola de tareas) y MicrotaskQueue
+ * 
+ * FLUJO DEL EVENT LOOP:
+ * 1- Call Stack
+ * 2- Operaciones asincronas    -> web APIs o node.js
+ * 3- Operacion termina         -> La coloca en Task Queue (Cola de tareas) y MicrotaskQueue
+ * 4- Si Call stack vacio       -> Mueve tareas del Microtask Queue o Task Queue al Call Stack
+ * 5- El proceso se repite
+*/
+
+
+
 //########################## Asíncronia ##########################################
 
 /**
@@ -719,6 +737,8 @@ console.log(cuenta.balance) //mostrará 20
  * 1- Callbacks
  * 2- SetTimeout(funcion, tiempo)
  * 3- Promesas
+ * 4- Async/Await
+ * 
 */
 console.log("primero")
 console.log("final")
@@ -882,18 +902,26 @@ function paso3Promesa() {
 paso1Promesa().then(paso2Promesa).then(paso3Promesa).then(()=>{console.log("todas las promesas hechas")})
 
 
-//########################## Event loop ##########################################
 
-/**
- * Componentes del Event loop
- * 1- Call Stack (pila de ejecución)
- * 2- Web APIs (Apis del navegador) o node.js = setTimeout()...
- * 3- Task Queue (Cola de tareas) y MicrotaskQueue
- * 
- * FLUJO DEL EVENT LOOP:
- * 1- Call Stack
- * 2- Operaciones asincronas    -> web APIs o node.js
- * 3- Operacion termina         -> La coloca en Task Queue (Cola de tareas) y MicrotaskQueue
- * 4- Si Call stack vacio       -> Mueve tareas del Microtask Queue o Task Queue al Call Stack
- * 5- El proceso se repite
-*/
+//########################## Async/Await ##########################################
+
+function process() { //ahora es sincrona
+    console.log("Inicio del proceso")
+    console.log("fin del proceso")
+}
+//process()
+
+//funcion auxiliar que usa una promesa para ejecutar un setTimeout para esperar ms segundos
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))}
+
+async function process2() { //ahora es asincrona
+
+    console.log("Inicio del proceso")
+
+    await wait(5000) //si no ponemos el await, NO SE ESPERA 5000 ms (5 segundos)
+    console.log("proceso despues de 5 segundos")
+    console.log("fin del proceso")
+}
+
+//process2()
