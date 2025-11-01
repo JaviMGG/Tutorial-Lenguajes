@@ -604,7 +604,7 @@ console.log(todoElMapa)     //se muestra TODO el mapa
 //nombre de una funcion TAMBIEN es un puntero a dicha funcion 
 
 //declaracion normal
-function name(params) {
+function name2(params) {
     //...
 }
 
@@ -617,16 +617,16 @@ function name(params) {
 let variableNueva = function name(params) {}
 
 //si creamos una funcion y al invocarla, tenemos MENOS PARAMETROS de los permitidos, devuelve NaN
-function suma(x, y){
+function suma2(x, y){
     return x + y
 }
-console.log(suma(1))    //devuelve NaN
+console.log(suma2(1))    //devuelve NaN
 
 //si creamos una funcion y al invocarla, tenemos MENOS PARAMETROS de los permitidos PERO al declarar la funcion, los parametros valen 0, funciona
 function suma2(x, y=0) {
     return x + y
 }
-console.log(suma(1))    //devuelve 1
+console.log(suma2(1))    //devuelve 1
 
 //si creamos una funcion y al invocarla, tenemos MÁS PARAMETROS de los permitidos, ignora los que sobra (si hay 3 parametros, coge los 3 primeros)
 function sumaTriple(x,y,z){
@@ -656,7 +656,7 @@ function funcion1(){
 }
 
 //"Acumulacion de funciones"
-x = suma(suma(1,2),3)   
+x = suma2(suma2(1,2),3)   
 console.log(x)          //devuelve 3
 
 //Timeout
@@ -671,3 +671,188 @@ console.log(x)          //devuelve 3
 
 //la funcion va a final de la cola de espera
 setTimeout(funcion1,3,2,1)
+
+
+
+//########################## Proxy ##########################################
+
+//está en medio del destinatario y el origen
+const proxyto = {
+    get(target, property){
+        return target[property]
+        //cuando el usuario haga una operacion de "get", el proxy mostrará por pantalla "get"
+        //console.log("get")
+
+    },
+    set(target, property, Valor){
+        if(Valor < 0){console.log("valor no puede ser negativo")}
+        else{target[property] = Valor} //actualiza el valor
+
+        //cuando el usuario haga una operacion de "set", el proxy mostrará por pantalla "set" 
+        //console.log("set")
+    }
+
+}
+
+//clase auxiliar para entender el ejercicio
+class CuentaDelBanco {
+    constructor(balance) {
+        this.balance = balance
+    }
+
+}
+
+//crea una nueva cuenta bancaria con valor 100 y con un "sincronizador" llamado "proxyto" (declarado previamente)
+const cuenta = new Proxy(new CuentaDelBanco(100), proxyto) //primer argumento es qué quiero "sincronizar" entre origen y destino, segundo parametro es quien se encarga de "sincronizar"/el manejador
+
+//new CuentaDelBanco(100)
+console.log(cuenta.balance) //mostrará 100
+cuenta.balance = 20
+console.log(cuenta.balance) //mostrará 20
+
+
+
+//########################## Asíncronia ##########################################
+
+/**
+ * Mecanismos de asincronia:
+ * 1- Callbacks
+ * 2- SetTimeout(funcion, tiempo)
+ * 3- Promesas
+*/
+console.log("primero")
+console.log("final")
+
+/**
+ * muestra SIEMPRE
+ * "primero"
+ * "final"
+*/
+
+//console.log("primero")
+//for (let index = 0; index < 1000000000000000; index++) {}
+//console.log("final")
+
+/**
+ * muestra:
+ * "primero"
+ * (no muestra final hasta pasado un tiempo)
+*/
+
+
+
+//########################## Callbacks ##########################################
+
+//funcion suma auxiliar para la callback
+function sum(...params) {
+    let res = 0
+    for (let number of params)
+        res += number
+    return res
+}
+
+
+function procesarSuma(dato, funcionCallback) {
+    const result = sum(...dato)
+}
+
+function procesarResultado(result) {
+    console.log("la suma de mis datos es  ${result}")
+}
+
+procesarSuma([1,2,3], procesarResultado)
+
+
+
+//########################## setTimeout ##########################################
+
+console.log("primero")
+setTimeout(() => {console.log("segundo")}, 2000); //se ejecutará la funcion anónima () despues de 2000/1000 segundos (1 segundo)
+console.log("tercero")
+
+/**
+ * Mostrará:
+ * "primero"
+ * "tercero" 
+ * "segundo"
+*/
+
+function paso1(callback1) {
+    setTimeout(() => {
+       console.log("Paso 1 acabado")
+       callback1() //cuando se ejecute esto, SE EJECUTA LA FUNCION ANONIMA QUE ESTA EN LA FUNCION step1()
+    }, 1000);
+}
+
+function paso2(callback1) {
+    setTimeout(() => {
+       console.log("Paso 2 acabado")
+       callback1() //cuando se ejecute esto, SE EJECUTA LA FUNCION ANONIMA QUE ESTA EN LA FUNCION step1()
+    }, 1000);
+}
+
+function paso3(callback1) {
+    setTimeout(() => {
+       console.log("Paso 3 acabado")
+       callback1() //cuando se ejecute esto, SE EJECUTA LA FUNCION ANONIMA QUE ESTA EN LA FUNCION step1()
+    }, 1000);
+}
+
+
+paso1(()=>{
+    paso2(()=>{ //paso 2 depende de paso 1
+        paso3(()=>{ //paso 3 depende de paso 2
+                console.log("todos los pasos completados")
+        })
+    })
+})
+
+/**
+ * Mostrará:
+ * Paso 1 acabado
+ * Paso 2 acabado
+ * Paso 3 acabado
+ * todos los pasos completados
+*/
+
+
+
+//########################## Promesas ##########################################
+
+/**
+ * then     => promesa ejecutada con exito
+ * catch    => salta un error si no funciona la promesa
+ * finally  => funciona siempre
+*/
+
+//resolve es si se resuelve
+//reject es si no se resuelve
+const promesa = new Promise((resolve, reject) => { 
+    
+})
+
+promesa.then(result => {
+    console.log(result)
+}).catch(errorcito  =>{
+    console.log(errorcito)
+}).finally(()=>{
+    console.log("se ejecuta siempre")
+})
+
+
+
+//########################## Event loop ##########################################
+
+/**
+ * Componentes del Event loop
+ * 1- Call Stack (pila de ejecución)
+ * 2- Web APIs (Apis del navegador) o node.js = setTimeout()...
+ * 3- Task Queue (Cola de tareas) y MicrotaskQueue
+ * 
+ * FLUJO DEL EVENT LOOP:
+ * 1- Call Stack
+ * 2- Operaciones asincronas    -> web APIs o node.js
+ * 3- Operacion termina         -> La coloca en Task Queue (Cola de tareas) y MicrotaskQueue
+ * 4- Si Call stack vacio       -> Mueve tareas del Microtask Queue o Task Queue al Call Stack
+ * 5- El proceso se repite
+*/
