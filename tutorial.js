@@ -828,17 +828,58 @@ paso1(()=>{
 //resolve es si se resuelve
 //reject es si no se resuelve
 const promesa = new Promise((resolve, reject) => { 
-    
+    setTimeout(()=>{
+        if(true){
+            resolve("Operacion exitosa")
+        }else{
+            reject("Ha habido un error")
+        }
+    },4000) //ponemos 4 segundos para que no se solape con los setTimeout de ARRIBA
 })
 
-promesa.then(result => {
-    console.log(result)
-}).catch(errorcito  =>{
-    console.log(errorcito)
-}).finally(()=>{
-    console.log("se ejecuta siempre")
-})
+promesa
+    .then(result => {
+        console.log(result)})
+    .catch(errorcito  =>{
+        console.log(errorcito)})
+    .finally(()=>{
+        console.log("Final del codigo")})
 
+
+//Encadenar promesas
+
+function paso1Promesa() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Paso 1 acabado CON PROMESA")
+            //no se puede llamar a callback(), hay que llamar a resolve
+            resolve()
+        }, 1000); //cuando pase 1 segundo, imprime el log y llama a resolve
+    })
+}
+
+function paso2Promesa() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Paso 2 acabado CON PROMESA")
+            //no se puede llamar a callback(), hay que llamar a resolve
+            resolve()
+        }, 1000); //cuando pase 1 segundo, imprime el log y llama a resolve
+    })
+}
+
+function paso3Promesa() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Paso 3 acabado CON PROMESA")
+            //no se puede llamar a callback(), hay que llamar a resolve
+            resolve()
+        }, 1000); //cuando pase 1 segundo, imprime el log y llama a resolve
+    })
+}
+
+//cuando acaba la promesa 1, ejecuta la promesa 2, cuando acaba la 2, ejecuta la 3, cuando ejecuta la 3, ejecuta la ultima funcion anonima
+paso1Promesa().then(paso2Promesa).then(paso3Promesa).then(()=>{console.log("todas las promesas hechas")})
 
 
 //########################## Event loop ##########################################
