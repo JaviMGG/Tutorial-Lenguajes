@@ -74,7 +74,7 @@ void funcionDeTipos() {
 
 
 
-//############################################ NAMESPACE ################################################################
+//############################################ NAMESPACE ###############################################################
 
 //Similar a crear funciones
 namespace primero{
@@ -120,7 +120,7 @@ void funcionNamespace(){
 
 
 
-//############################################ TYPEDEF y USING ################################################################
+//############################################ TYPEDEF y USING #######################################
 
 //Sirve para "renombrar elementos"/crea identificadores
 //(typedef) (tipo de dato que se sustituira) (nuevo nombre)
@@ -233,7 +233,6 @@ bool pruebaNOT(){
 	bool verdadero = true;
 	return !verdadero;			//devuelve false porque la not invierte el valor
 }
-
 
 
 
@@ -359,6 +358,8 @@ std::string funcion4(std::string x){
 	return x;
 	//es necesario un RETURN que devuelva un STRING
 }
+
+
 
 //############################################ FUNCIONES SOBRECARGADAS #########################################
 
@@ -505,6 +506,7 @@ void funcionBucles(){
 	} while (i < 10);
 
 }
+
 
 
 //############################################ ARRAYS ##################################################
