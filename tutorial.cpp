@@ -29,7 +29,7 @@ void funcionDeInsercionYExtraccion(){
 	cout << "te llamas " << nombre << endl;
 
 	cout << " y que apellido tienes\n";
-	getline(cin>>ws, apellido);	//esta funcion lo que hace es que coge el string que se escriba, que escribe/recibe desde el primer parametro (el ws es para evitar fallos) y lo guarda en el segundo
+	getline(cin, apellido);	//esta funcion lo que hace es que coge el string que se escriba, que escribe/recibe desde el primer parametro (el ws es para evitar fallos) y lo guarda en el segundo
 
 }
 
@@ -520,6 +520,12 @@ void funcionBucles(){
  * nombres[1] //devuelve el segundo elemento del array
  * nombres[2] //devuelve el tercer elemento del array
  * ----------------------------------------------------------------
+ * FUNCION FILL
+	 * fill(array, array + tamañodearray, valor);
+	 * PRIMERO PARAMETRO: array que se va a rellenar. DESDE DONDE (SI PONEMOS el nombre del array, empieza desde el primer elemento).
+	 * SEGUNDO PARAMETRO: array + tamañodearray (es decir, el final del array). HASTA DONDE se va a rellenar (EL TAMAÑO DEL ARRAY DEBE SER MAYOR O IGUAL QUE tamañodearray).
+	 * TERCER PARAMETRO: valor con el que se va a rellenar el array. 
+ * ----------------------------------------------------------------
 */
 
 void funcionArrays(){
@@ -547,7 +553,28 @@ void funcionArrays(){
 
 	//para saber el tamaño de un array
 	cout << "El tamaño del array es: " << sizeof(nombres) << endl; //devuelve el tamaño del array en bytes.
+
+	//para saber el tamaño de un elemento del array
+	cout << "El tamaño del elemento del array es: " << sizeof(nombres[0]) << endl; //devuelve el tamaño del elemento del array en bytes.
+
+	//para pasar un array a una funcion
+	funcionArrayAux(nombres);
+
+	//funcion fill
+	fill(numeros, numeros + 5, 0); //rellena el array numeros con 0.
+
+	//para rellenar un array con datos introducios por el usuario (usar getline visto previamente):
+	for (int i = 0; i < 5; i++){
+		cout << "Introduce un numero: ";
+		getline(cin, numeros[i]);
+	}
 }
+
+void funcionArrayAux(string nombres[]){
+	std::cout << "el array es: " << nombres << std::endl;	
+}
+
+
 
 //############################################ FUNCION MAIN y LLAMADA A METODOS ##################################################
 
