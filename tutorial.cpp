@@ -38,6 +38,7 @@ void funcionDeInsercionYExtraccion(){
 //############################################ TIPO DE DATOS Y CONVERSION DE TIPOS ##################################################
 
 void funcionDeTipos() {
+
     // ENTEROS (int)
     int x = 0;
 
@@ -57,7 +58,7 @@ void funcionDeTipos() {
     std::string s = "Hola";
 
     // DATOS CONSTANTES (const)
-    const double pi = 3.14;
+    const double pi = 3.14; //no se puede modificar/cambiar el valor que tienen asignado
 
     // Conversion de tipos
     double primera = 3.4;
@@ -336,10 +337,89 @@ void funcionesVarias(){
 
 
 
+//############################################ FUNCIONES #########################################
+//SIEMPRE CON LA MISMA "ESTRUCTURA": tipo_de_retorno nombre_de_la_funcion(parametros){...}
+
+void funcion(){
+	std::cout << "Hola" << std::endl;
+	//no es necesario un RETURN
+}
+
+int funcion2(int x){
+	return x;
+	//es necesario un RETURN que devuelva un ENTERO
+}
+
+double funcion3(double x){
+	return x;
+	//es necesario un RETURN que devuelva un DOUBLE
+}
+
+std::string funcion4(std::string x){
+	return x;
+	//es necesario un RETURN que devuelva un STRING
+}
+
+//############################################ FUNCIONES SOBRECARGADAS #########################################
+
+void funcionSobrecargada(){
+	std::cout << "Hola1" << std::endl;	
+}
+
+void funcionSobrecargada(std::string x){
+	std::cout << "Hola2 " << x << std::endl;	
+}
+
+void funcionSobrecargada(std::string x, std::string y){
+	std::cout << "Hola3 " << x << " " << y << std::endl;	
+}
+
+/**
+ * PUEDEN HABER MÁS DE UNA FUNCION CON EL MISMO NOMBRE, PERO LOS PARAMETROS DEBEN SER DIFERENTES.
+ * SI NO SON DIFERENTES, SE SOLAPAN
+*/
+
+//funcionSobrecargada(); //devuelve hola1
+//funcionSobrecargada("hola"); //devuelve hola2 hola
+//funcionSobrecargada("hola", "adios"); //devuelve hola3 hola adios
+
+
+
+//############################################ AMBITO DE LAS VARIABLES##########################################
+
+/**
+ * Variables locales:
+ * ------------------------------------------------------------------------
+ * Son aquellas que se declaran dentro de una funcion y solo pueden ser usadas dentro de ella
+ * 
+ * Variables globales:
+ * ------------------------------------------------------------------------
+ * Son aquellas que se declaran fuera de una funcion y pueden ser usadas en cualquier funcion
+*/
+using namespace std;
+
+int x = 1;
+void ejemploVariableLocal(){
+	int x = 2; //esto es una VARIABLE LOCAL
+	cout << "Variable local: " << x << endl; //devuelve un 2
+	variableCompartidaLocal(x); //envio la variable local a la funcion
+}
+
+void variableCompartidaLocal(int x){
+	//int x = 3; PODRIAMOS REDECLARARLA PUESTO QUE ES EL MISMO TIPO Y NOMBRE QUE EL PARAMETRO QUE SE RECIBE
+	cout << "Variable compartida local: " << x << endl; //devuelve un 2. Si la redeclaramos devuelve un 3
+}
+
+void ejemploVariableGlobal(){
+	cout << "Variable global: " << x << endl; //devuelve un 1
+}	
+
+
+
 //############################################ CONDICIONALES  ##################################################
 
 /**
-Tres tipos de condicionales:
+ * Tres tipos de condicionales:
  * ------------------------------------------------------------------------
  * 1- if, else if, else     => if(condicion){cosa a ejecutar} else if(condicion "secundaria"){cosa a ejecutar} else{cosa a ejecutar si no se cumple las condiciones}
  * 2- switch                => switch(variable que determina los casos){case X: cosa a ejecutar si variable vale X...}
@@ -382,7 +462,7 @@ void funcionCondicionales(){
 	//Operador ternario
 	cout << "Escribe de nuevo tu edad, que se me ha olvidado" << endl; 
 	cin >> edad;
-	string VerificarEdad = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad";
+	string VerificarEdad = edad >= 18 ? "Eres mayor de edad" : "Eres menor de edad"; //ESTE ES EL OPERADOR TERNARIO
 	cout << VerificarEdad;
 
 }
@@ -405,10 +485,10 @@ void funcionCondicionales(){
 
 void funcionBucles(){
 	using namespace std;
+
 	//for
 	for (int i = 0; i < 10; i++){
-		std::cout << i << std::endl;
-		/* code */
+		cout << i << endl;
 	}
 	
 	//while
@@ -418,12 +498,55 @@ void funcionBucles(){
 		i++;
 	}
 
-	i = 0;
+	i = 0; //variable de donde empezamos
 	do{
 		cout << i << endl;
 		i++;
 	} while (i < 10);
 
+}
+
+
+//############################################ ARRAYS ##################################################
+/**
+ * Un array es una coleccion de datos del mismo tipo
+ * ----------------------------------------------------------------
+ * std::string nombres[] = {"Juan", "Pedro", "Maria"}; //ARRAY CON TAMAÑO 3 CON ELEMENTOS YA DECLARADOS
+ * int numeros[5]; 		//ARRAY VACIO CON TAMAÑO 5
+ * double arrayVacia[]; //ARRAY VACIO CON TAMAÑO 0
+ * ----------------------------------------------------------------
+ * nombres.length() //devuelve el tamaño del array
+ * nombres[0] //devuelve el primer elemento del array
+ * nombres[1] //devuelve el segundo elemento del array
+ * nombres[2] //devuelve el tercer elemento del array
+ * ----------------------------------------------------------------
+*/
+
+void funcionArrays(){
+	using namespace std; //si se elimina esta linea, en cada string habria que poner std::string y en cout, std::cout.
+
+	string nombres[] = {"Juan", "Pedro", "Maria"}; //ARRAY CON TAMAÑO 3 CON ELEMENTOS YA DECLARADOS
+	
+	int numeros[5]; //ARRAY VACIO CON TAMAÑO 5
+	cout << nombres[0] << endl; //devuelve Juan.
+	cout << numeros << endl; //devuelve la DIRECCION DE MEMORIA DEL ARRAY numeros.
+
+	//para modificar un dato concreto
+	nombres[0] = "Pedro"; //ahora el array es {"Pedro", "Pedro", "Maria"}
+	cout << nombres[0] << endl; //devuelve Pedro.
+
+	//para recorrer un array
+	for (int i = 0; i < nombres.length(); i++){
+		cout << nombres[i] << endl; //devuelve los elementos del array, es decir: Pedro, Pedro, Maria.
+	}
+
+	//bucle foreach //se traduce como: para cada nombre en nombres{...}
+	for (string nombre : nombres){
+		cout << nombre << endl; //devuelve los elementos del array, es decir: Pedro, Pedro, Maria.
+	}
+
+	//para saber el tamaño de un array
+	cout << "El tamaño del array es: " << sizeof(nombres) << endl; //devuelve el tamaño del array en bytes.
 }
 
 //############################################ FUNCION MAIN y LLAMADA A METODOS ##################################################
@@ -448,8 +571,9 @@ int main() {
 	pruebaAritmeticosDIVIDIR();
 	pruebaAritmeticosMODULO();
 	*/
-	funcionStrings();
+	funcionArrays();
 	funcionesVarias();
+	funcionBucles();
 	funcionNueva();		//esta funcion si se ejecutara por estar declarada arriba
 	//funcionNueva2();	//esta funcion NO se ejecutara
 	int a = 1, b = 2, c;
