@@ -1,7 +1,8 @@
 //Autor: JaviMGG
 #include <iostream>
 #include <string>
-
+#include <stdio.h>
+#include <stdlib.h>
 //esto es un comentario de una linea
 
 /*esto
@@ -25,11 +26,12 @@ void funcionDeInsercionYExtraccion(){
 	using namespace std;
 	string nombre, apellido;
 	cout << "como te llamas" <<endl;
-	cin >> nombre;	//si no deja escribir el nombre, HAY QUE IR A: configuracion -> code runner ->"run in terminal" y activarlo
+	cin >> nombre;
+	cin.ignore();	//si no deja escribir el nombre, HAY QUE IR A: configuracion -> code runner ->"run in terminal" y activarlo
 	cout << "te llamas " << nombre << endl;
 
 	cout << " y que apellido tienes\n";
-	getline(cin, apellido);	//esta funcion lo que hace es que coge el string que se escriba, que escribe/recibe desde el primer parametro (el ws es para evitar fallos) y lo guarda en el segundo
+	//getline(cin, apellido);	//esta funcion lo que hace es que coge el string que se escriba, que escribe/recibe desde el primer parametro (el ws es para evitar fallos) y lo guarda en el segundo
 
 }
 
@@ -95,11 +97,11 @@ namespace segundo{
  using std::cout
  AUNQUE SE TENDRIA QUE VOLVER A PONER EN TODOS EL std:: delante EXCEPTO EN LOS cout
 */
+using namespace std; //necesario para el endl, sino habría que poner: std::endl
 
 void funcionNamespace(){
 	using namespace primero;
 	using namespace segundo;
-	using namespace std; //necesario para el endl, sino habría que poner: std::endl
 	//using std::cout; 	 //si usaramos este, podriamos poner directamente: cout<<...
 	int x = 0; 
 	
@@ -132,7 +134,7 @@ textoRenombrado nombre = "Joselito";
 typedef int Entero;
 Entero nuevoValor = 0;
 
-using Entero = int; //Equivale a un typedef
+//using Entero = int; //Equivale a un typedef, HAY CONFLICTO CON EL ANTERIOR typedef
 
 
 
@@ -225,7 +227,7 @@ bool pruebaAND(){
 
 //or
 bool pruebaOR(){
-	return 2 < 3 and 8 > 23;	//devuelve true si 2 < 3 O SI 8 > 23, si se cumple alguna de las 2, devuelve true
+	return 2 < 3 or 8 > 23;	//devuelve true si 2 < 3 O SI 8 > 23, si se cumple alguna de las 2, devuelve true
 }
 
 //not
@@ -281,7 +283,7 @@ void funcionStrings(){
 	//cout << "la posicion primera de berto es " << posicion << endl;
 
 	//erase
-	nombre.erase(5, -1);
+	nombre.erase(5);
 	//cout << nombre;
 
 }
@@ -400,6 +402,9 @@ void funcionSobrecargada(std::string x, std::string y){
 using namespace std;
 
 int x = 1;
+void variableCompartidaLocal(int x);
+void ejemploVariableGlobal();
+
 void ejemploVariableLocal(){
 	int x = 2; //esto es una VARIABLE LOCAL
 	cout << "Variable local: " << x << endl; //devuelve un 2
@@ -530,6 +535,7 @@ void funcionBucles(){
  * ----------------------------------------------------------------
 */
 
+void funcionArrayAux(string nombres[]);
 void funcionArrays(){
 	using namespace std; //si se elimina esta linea, en cada string habria que poner std::string y en cout, std::cout.
 
@@ -544,7 +550,7 @@ void funcionArrays(){
 	cout << nombres[0] << endl; //devuelve Pedro.
 
 	//para recorrer un array
-	for (int i = 0; i < nombres.length(); i++){
+	for (int i = 0; i < nombres->size(); i++){
 		cout << nombres[i] << endl; //devuelve los elementos del array, es decir: Pedro, Pedro, Maria.
 	}
 
@@ -566,14 +572,68 @@ void funcionArrays(){
 	fill(numeros, numeros + 5, 0); //rellena el array numeros con 0.
 
 	//para rellenar un array con datos introducios por el usuario (usar getline visto previamente):
-	for (int i = 0; i < 5; i++){
-		cout << "Introduce un numero: ";
-		getline(cin, numeros[i]);
-	}
+	//for (int i = 0; i < 5; i++){
+	//	cout << "Introduce un numero: ";
+	//	getline(cin, numeros[i]);
+	//}
 }
 
 void funcionArrayAux(string nombres[]){
 	std::cout << "el array es: " << nombres << std::endl;	
+}
+
+
+
+//############################################ STRUCT ##################################################
+/**
+ * Estructura de datos que agrupa varias funciones bajo un mismo nombre:
+ * struct (nombre de la estructura) {
+ * 		(tipo de dato) dato;
+ * 		(tipo de dato2) dato2;
+ * }
+ * 
+ * luego se usaria: (nombre de la estructura).(tipo de dato) ...
+*/
+struct Persona
+{
+	string nombre;
+	int edad;
+	char dni;	
+};
+
+void funcion_para_pasar_struct(Persona p);
+
+void prueba_structs(){
+	Persona ejemploPersona;
+	ejemploPersona.edad = 12;
+	ejemploPersona.nombre = "Manolito";
+
+	cout << "El nombre de esta persona es" << ejemploPersona.nombre << endl;
+	funcion_para_pasar_struct(ejemploPersona);
+}
+
+void funcion_para_pasar_struct(Persona a){
+	cout << "El DNI de la persona de antes (pasada por parametro) es" << a.dni << endl;
+}
+
+
+
+//############################################ ENUMERACION ##################################################
+/**
+ * Tipo de dato que permite agrupar constantes con nombres significativos
+ * struct (nombre de la estructura) {
+ * 		(tipo de dato) dato;
+ * 		(tipo de dato2) dato2;
+ * }
+ * 
+ * luego se usaria: (nombre de la estructura).(tipo de dato) ...
+*/
+
+enum letras {a, b, c, d, e, f};
+
+void prueba_enum(){
+	letras letraEscogida = a;
+	cout << "la letra escogida es" << letraEscogida << endl;
 }
 
 
