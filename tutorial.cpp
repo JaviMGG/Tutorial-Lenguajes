@@ -550,7 +550,7 @@ void funcionArrays(){
 	cout << nombres[0] << endl; //devuelve Pedro.
 
 	//para recorrer un array
-	for (int i = 0; i < nombres->size(); i++){
+	for (int i = 0; i < 3; i++){
 		cout << nombres[i] << endl; //devuelve los elementos del array, es decir: Pedro, Pedro, Maria.
 	}
 
@@ -608,7 +608,7 @@ void prueba_structs(){
 	ejemploPersona.edad = 12;
 	ejemploPersona.nombre = "Manolito";
 
-	cout << "El nombre de esta persona es" << ejemploPersona.nombre << endl;
+	cout << "El nombre de esta persona es " << ejemploPersona.nombre << endl;
 	funcion_para_pasar_struct(ejemploPersona);
 }
 
