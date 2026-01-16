@@ -21,7 +21,13 @@
  * debido a que JAVA es un lenguaje compilado (un compilador revisa todo hasta que vea que está bien y lo traduce a lenguaje maquina...)
  */
 
-//IMPORTANTE: En java NO se puede crear funciones NI declarar variables FUERA de la clase "class" (EXCEPTO los IMPORTS)
+
+    //##################################### Importar clases/elementos a esta clase ##############################################
+    //si no se usa el import, saldria "unused import" (no suele salir al lado)
+    //import java.math.BigDecimal;
+    //import java.net.Socket;
+    //si queremos que se obtengan muchos mas elementos (y no uno concreto)
+    //import java.net.*; //EL * obtendrá todos los elementos que se encuentren en java.net
 public class tutorial {
 
 
@@ -220,6 +226,25 @@ public class tutorial {
             System.out.println(i);
             i++;
         }while(i < 10);
+    }
+
+    //##################################### Bloque try catch ##############################################
+    
+    /**
+     * Usado para capturar excepciones.
+     * Si por ejemplo tenemos una funcion que durante el proceso puede provocar el error, al saltar a dicho error,
+     * se captura y se ejecuta el bloque catch
+    */
+    public static void ejemploTryCatch(int [] a){
+        System.out.println("Array actual"+ a.toString());
+        try {
+            int suma = a[0];
+            for (int i = 1; i < a.length; i++) {
+                System.out.println(suma+=a[i+1]); //si I vale como máximo 5 y acaba valiendo 6, al acceder a un elemento que no existe (fuera del indice), salta excepcion
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("VALOR FUERA DE INDICE"); //al capturarse la excepcion "e", se mostrará por pantalla lo del println
+        }
     }
 
 } //lo que haya debajo de esta linea NO PERTENECERÁ A LA CLASE Y DARÁ ERROR
