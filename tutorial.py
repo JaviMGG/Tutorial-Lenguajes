@@ -209,6 +209,6 @@ print(range(10))
 ############################################# definir y llamar funciones #############################################
 def funcion(): #definir funcion
     #codigo de la funcion
+    print("esta es una funcion")
     
-funcion()      #invocar a la funcion
-
+funcion()     #invocar a la funcion
