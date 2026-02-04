@@ -1,3 +1,12 @@
+#Autor: JaviMGG
+
+#Esto es un comentario
+
+"""
+Esto es un comentario 
+en varias lineas
+"""
+
 ############################################# Numeros #############################################
 a = 17 / 3
 b = 17 //3
