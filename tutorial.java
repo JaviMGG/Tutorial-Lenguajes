@@ -32,7 +32,7 @@ public class tutorial {
 
 
 
-    //##################################### Escribir HolaMundo (hacer un print) ##############################################
+    //##################################### Escribir HolaMundo (hacer un print) #################################################
     
     /**
      * Dos tipos de prints mas comunes:
@@ -45,7 +45,7 @@ public class tutorial {
 
 
 
-    //##################################### Tipo de datos, tipos de instancias y ambito de vida ##############################################
+    //##################################### Tipo de datos, tipos de instancias y ambito de vida #################################
 
     /**
      * Ambito de vida:
