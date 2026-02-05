@@ -386,4 +386,7 @@ fi
     $0 = ./tutorial.sh
     $1 = primer
     $2 = segundo
+
+    Si queremos saber cuales son los parametros, usaremos $*
+    Si queremos saber cuantos parametros hay, usaremos $#
 '
