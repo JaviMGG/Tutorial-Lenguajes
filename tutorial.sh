@@ -49,13 +49,100 @@ x="hola variable cambiada"
 x=3
 xx=33
 
-#Igualdad (== o !=)
+#Suma
+y=23
+a=11
 
-igualdad=[[$x == $xx]]
-echo "la variable x y xx son iguales? Respuesta $igualdad"
+y=$((y+=a)) #es lo mismo que poner y = y + a
 
-diferencia=[[$x != $xx]]
-echo "la variable x y xx son diferentes? Respuesta $diferencia"
+
+#Resta
+y=23
+a=11
+
+z=$((y-=a)) #es lo mismo que poner y = y - a
+
+
+#Multiplicacion
+y=23
+a=11
+
+z=$((y*=a)) #es lo mismo que poner y = y * a
+
+
+#Division
+y=23
+a=11
+
+z=$((y/=a)) #es lo mismo que poner y = y / a
+
+
+#Modulo
+y=23
+a=11
+
+z=$((y%=a)) #es lo mismo que poner y = y % a
+
+
+#Igualdad (==, !=, >, >=, < , <=)
+
+if [ $x == $xx ] 
+then
+    echo "la variable x y xx son iguales"
+fi
+
+if [ $x != $xx ] 
+then
+    echo "la variable x y xx son diferentes"
+fi
+
+mayor=[["$x" > "$xx"]] #otra forma es ["$x" \> "$xx"]
+echo "la variable x es mayor que xx? Respuesta $mayor"
+
+menor=[["$x" < "$xx"]] #otra forma es ["$x" \< "$xx"]
+echo "la variable x es menor que xx? Respuesta $menor"
+
+
+#cadena vacia (-z): longitud 0 (null)
+
+v="holamundo"
+if [ -z $v ] 
+then
+    echo "Esta variable v está vacia"
+else 
+    echo "Esta variable no está vacia"
+fi 
+
+
+#cadena no vacia (-n): longitud != 0
+
+w="textoejemplo"
+if [[ -n $w ]] 
+then
+    echo "Esta cadena no está vacia"
+else 
+    echo "Esta cadena está vacia"
+fi
+
+
+x=1
+y=2
+
+# AND (Usando el comando test [ ])
+if [ $x == 1 -a $y == 2 ]; then
+    z="Verdadero"
+else
+    z="Falso"
+fi
+echo "x es 1 e y es 2? Respuesta: $z"
+
+# OR (Usando el comando test [ ])
+if [ $x == 1 -o $y == 2 ]; then
+    zz="Verdadero"
+else
+    zz="Falso"
+fi
+echo "x es 1 o y es 2? Respuesta: $zz"
 
 
 
@@ -96,9 +183,9 @@ Ejemplo para comparar (USANDO SINTAXIS JAVA):
     }
 '
 
-if [ $variable_numero == 23]; then
+if [ $variable_numero == 23 ]; then
     echo "la variable vale 23"
-elif [ variable_numero == 18]; then
+elif [ $variable_numero == 18 ]; then
     echo "la variable vale 18"
 else 
     echo "El valor de 'variable_numero' es $variable_numero"
@@ -127,12 +214,12 @@ read -p ... variable
 Guardará en la variable "variable" el texto que escriba el usuario
 '
 
-read -p "Escribe tu nombre: " nombre
+read -r "Escribe tu nombre: " nombre
 echo "Tu nombre es: $nombre"
 
-read -p "Escribe el nombre del archivo del que quieras que se muestre su contenido " archivo
+read -r "Escribe el nombre del archivo del que quieras que se muestre su contenido " archivo
 echo "el contenido es: "
-cat $archivo 
+cat "$archivo" 
 
 
 
@@ -167,7 +254,7 @@ Ejemplo para comparar (usando sintaxis Java):
 #bucle desde un principio hasta un final "declarado"
 for variable_limitada in $variable_numero 
 do
-    echo $variable_limitada
+    echo "$variable_limitada"
 done
 
 #bucle en un espacio "limitado" (desde 1 hasta 5)
@@ -199,7 +286,7 @@ aprender/usar los siguientes comandos:
             columna 2: java
                 lo que se mostrará es: archivo java
     
-    - awk '{print $2}' (lo que hace es filtrar por columnas y MUESTRA por pantalla la columna 2 (en este caso))
+    - awk '{print "$2"}' (lo que hace es filtrar por columnas y MUESTRA por pantalla la columna 2 (en este caso))
 
     - rm archivo (lo que hace es borrarlo)
         si tenemos rm archivo.txt, lo borrara
@@ -208,10 +295,10 @@ aprender/usar los siguientes comandos:
 archivoNuevo=$(ls) #COMANDO LS del directorio actual
 
 for a in $archivoNuevo; do #la variable "a" obtendra el valor de cada archivo presente (a valdra "archivo.txt", luego valdra "archivo2.java"...) 
-    extensiones=$(echo $a | tr "." " " | awk '{print $2}')
+    extensiones=$(echo "$a" | tr "." " " | awk '{print $2}')
     #extensiones hara: muestra el archivo, le elimina el . y separa el nombre de la extension, y se muestra por pantalla la extension
-    if ["$extensiones" == "txt"]; then
-        rm $a
+    if [ "$extensiones" == "txt" ]; then
+        rm "$a"
     else
         echo "el archivo no termina en .txt"
     fi
@@ -230,7 +317,7 @@ Ejemplo para comparar (usando sintaxis Java):
 '
 
 contador=1
-while ["$contador" -lt 5]; do
+while [ $contador -lt 5 ]; do
     echo "El valor de 'contador' es $contador"
     ((contador++))
 done
@@ -246,15 +333,16 @@ Mostrar por pantalla las lineas de un "fichero.txt"
 documento=fichero.txt #tambien podriamos pedirle al usuario que nos diga el nombre del .txt para que lo lea usando el read -p ... documento
 
 while read -r linea; do
-    echo $linea
+    echo "$linea"
 done < "$documento"
 
 
 
 ############################### Bucle until ###############################
 #similar al bucle while
+
 contadorN=0
-until [$contadorN < 3]
+until [ $contadorN -lt 3 ]
 do
     echo $contadorN
     contadorN+=1
@@ -278,9 +366,24 @@ mi_noFuncion(){
     echo "no te lo digo"
 }
 
-read -p "Quieres que te diga si esto es una funcion? " valor
-if [$valor == "Si"]; then
+read -r "Quieres que te diga si esto es una funcion? " valor
+if [ "$valor" == "Si" ]; then
     mi_funcion
 else 
     mi_noFuncion
 fi
+
+
+
+############################### Parametros de BASH ######################
+: ' 
+    Si tenemos un comando tipo: 
+    --------------------------------------------
+    bash $ ./tutorial.sh primer segundo
+    el orden de los parametros de creciente de izquierda a derecha empezando por el 0,
+    siendo (en este caso):
+
+    $0 = ./tutorial.sh
+    $1 = primer
+    $2 = segundo
+'
