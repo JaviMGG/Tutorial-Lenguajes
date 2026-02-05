@@ -14,19 +14,19 @@ c = 5 * 3 + 2
 d = 5 * (3 + 2)
 print("a:", a, "b:", b, "c:", c, "d:", d)
 
-############ Operadores aritmeticos ##############
+############ Operadores aritmeticos #################
 print("Operadores aritmeticos basicos:")
 print("Suma:", 5 + 3)   
 print("Resta:", 5 - 3)
 print("Multiplicacion:", 5 * 3) 
 
-############ Division normal y entera ##############
+############ Division normal y entera ###############
 print("division normal:", a, "division entera:", b)
 
-############ Operadores aritmeticos ##############
+############ Operadores aritmeticos #################
 print ("operacion sin parentesis:", c, "operacion con parentesis:", d)
 
-############ Potencia ##############
+############ Potencia ###############################
 potencia = 2 ** 3
 potencia2 = -2 ** 3
 potencia3 = (-2) ** 3
@@ -34,7 +34,7 @@ print( "2 elevado a 3 es:", potencia)
 print( "2 elevado a 3 es:", potencia2)
 print( "2 elevado a 3 es:", potencia3)
 
-############ Numeros negativos ################
+############ Numeros negativos ######################
 negativo = -5
 print("numero negativo:", negativo)
 negativo *= -1
@@ -75,7 +75,7 @@ print ("\n""""\
        -H hostName
        """)
 
-############ Concatenar strings ##############
+############ Concatenar strings ##########################
 a = "hola"
 b = "mundo"
 print("Concatenacion de strings sin espacio entre ellas: ", a + b)
@@ -115,13 +115,13 @@ print ("imprimir segundo elemento del array: ", array[1])
 print ("imprimir ultimo elemento del array: ", array[-1]) 
 print ("imprimir desde el segundo elemnto hasta el final:\n", array[2:]) # tambien se puede hacer array[-9:]
 
-############ Concatenar elementos de 2 o + listas ##############
+############ Concatenar elementos de 2 o + listas ############################
 array2 = [10,11,12,13,14,15,16,17,18,19]
 print("primer array:", array,
       "\nsegundo array:", array2,
       "\narray concatenado:", (array+array2))
 
-############ Añadir a una lista existente y paso de valor por referencia ##############
+############ Añadir a una lista existente y paso de valor por referencia #####
 array3 = array #AQUI LO QUE PASAMOS ES LA REFERENCIA, NO EL VALOR
 print(array3)
 
