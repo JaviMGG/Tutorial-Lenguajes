@@ -27,31 +27,64 @@ COMMENT
 
 
 ############################### Variables #######################################
+#Las variables son "CASE SENSITIVE" (sensibles), es decir, la variable "variable" no es lo mismo que "VARIABLE" ni que "variABLE"
 variable="Esto es una variable"
 variable_numero=23
+
+
+
+############################### Llamar a una Variable ###########################
+#Para poder llamar a una variable (y poder usarla), hay que poner previamente $
+#similar a los punteros de C
+
+$variable
+$variable_numero
+
+
+
+############################### Operadores ######################################
+#Asignacion (=): tiene la siguiente estructura => variable=valor (NADA DE ESPACIOS EN BLANCO)
+
+x="hola variable cambiada"
+x=3
+xx=33
+
+#Igualdad (== o !=)
+
+igualdad=[[$x == $xx]]
+echo "la variable x y xx son iguales? Respuesta $igualdad"
+
+diferencia=[[$x != $xx]]
+echo "la variable x y xx son diferentes? Respuesta $diferencia"
 
 
 
 ############################### Mostrar por pantalla ############################
 
 # En python se usa print(...), en Java se usa System.out.print(...);
-# En shell se usa:
+# En shell se usa "echo":
 
 echo "Esto es un texto mostrado por pantalla"
-echo "El contenido de la variable 'variable_numero' es $variable_numero"
+echo "El contenido de la variable 'variable_numero' es $variable_numero" #aquí llamamos a la variable "variable_numero" usando previamente el $
 
 
 
 ############################### Guardarse un comando ###########################
+#sugerencia, los comandos buscarlos/aprenderlos. Son los mismos que se usan en el terminal.
 
 comando=$(ls) #Esto lo que hace es: el comando "ls" lo guarda en la variable comando
 echo "El comando ejecutado es $comando" #al mostrar por pantalla el echo, ejecutara en este caso "ls"
 
 
 
+############################### Salir (exit) ###################################
+#exit 0
+
+
+
 ############################### Condicional (if) ###############################
 : '
-Ejemplo para comparar (usando sintaxis Java):
+Ejemplo para comparar (USANDO SINTAXIS JAVA):
     if(variable_numero == 23){
         System.out.print(23);
     }
@@ -63,10 +96,10 @@ Ejemplo para comparar (usando sintaxis Java):
     }
 '
 
-if [ "$variable_numero" == 23]; then
-    echo "23"
-elif ["$variable_numero" == 18]; then
-    echo "18"
+if [ $variable_numero == 23]; then
+    echo "la variable vale 23"
+elif [ variable_numero == 18]; then
+    echo "la variable vale 18"
 else 
     echo "El valor de 'variable_numero' es $variable_numero"
 fi #se usa para indicar que se termina el if
@@ -103,6 +136,26 @@ cat $archivo
 
 
 
+############################### Case ###########################################
+#se usa para separar distintos casos (es lo mismo que tener muchos ifs seguidos)
+
+case $variable_numero in    #dado la variable "variable_numero"
+     1)
+        echo "vale 1"       #si vale 1, mostrará este texto
+     ;;                     #los dos ;; se usan para "separar casos distintos", si no se pone, se ejecuta el caso 2
+     2)
+        echo "vale 2"
+     ;;
+     10|11)
+        echo "vale 10 u 11" #pueden ponerse dos posibles combinaciones (o vale 10 o vale 11)
+     ;;
+     *)                     #caso por defecto (si no vale ni 1 ni 2)
+        echo "no sé qué numero es"
+     ;;
+esac                        #se usa para cerrar el case
+
+
+
 ############################### Bucle for ######################################
 : '
 Ejemplo para comparar (usando sintaxis Java):
@@ -110,6 +163,14 @@ Ejemplo para comparar (usando sintaxis Java):
         System.out.println(i);
     }
 '
+
+#bucle desde un principio hasta un final "declarado"
+for variable_limitada in $variable_numero 
+do
+    echo $variable_limitada
+done
+
+#bucle en un espacio "limitado" (desde 1 hasta 5)
 for numero in {1..5}; do
     echo "En esta iteracion, la variable 'numero' vale: $numero" #cada iteracion mostrara por pantalla el valor de "numero"
 done
@@ -176,7 +237,7 @@ done
 
 
 
-############################### Ejemplo bucle While ###############################
+############################### Ejemplo bucle While #######################
 : '
 Mostrar por pantalla las lineas de un "fichero.txt"
 '
@@ -187,6 +248,17 @@ documento=fichero.txt #tambien podriamos pedirle al usuario que nos diga el nomb
 while read -r linea; do
     echo $linea
 done < "$documento"
+
+
+
+############################### Bucle until ###############################
+#similar al bucle while
+contadorN=0
+until [$contadorN < 3]
+do
+    echo $contadorN
+    contadorN+=1
+done
 
 
 
