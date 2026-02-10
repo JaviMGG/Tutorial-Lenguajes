@@ -55,11 +55,21 @@ static void funcionConStatic()
 
 // ################################# Mostrar por pantalla valores ##################################
 int entero = 0;
+long numeroLong = 234567654322;
 float flotante = 0.0f;
 double doble = 0.0;
 char caracter = ' ';
 char cadena[100] = ""; // Cadena de caracteres con espacio para 100 caracteres
 bool booleano = false; // Valor booleano inicializado a false
+enum diasSemana {      // tipo de dato con un conjunto de constantes nombradas
+    Lunes,
+    Martes,
+    Miercoles,
+    Jueves,
+    Viernes,
+    Sabado,
+    Domingo
+};
 
 void mostrarValores() 
 {
@@ -158,4 +168,21 @@ int main() {
     printf("\nEl resultado de la suma es: %d\n", resultado);
 
     return 0;
+}
+
+
+
+// ################################# Punteros #######################################################
+// variable que contiene la direccion de otra variable
+
+void explicacionPunteros()
+{
+    double a[4] = {1.1,2.2,3.3,4.4};
+    double *z;      //Si no se le asigna nada, es puntero nulo
+    double **w;     //puntero a un puntero (el ultimo puntero es el que tiene la direccion de memoria del dato)
+    double *p,x;    //En la declaración se añade * antes del nombre de la variable
+    p = &a[2];      //El operador & devuelve la dirección de una variable
+    x = *p;
+    *p = 0.0;
+    p = a; /* &a[0] */
 }
