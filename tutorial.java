@@ -21,13 +21,17 @@
  * debido a que JAVA es un lenguaje compilado (un compilador revisa todo hasta que vea que está bien y lo traduce a lenguaje maquina...)
  */
 
-
     //##################################### Importar clases/elementos a esta clase ##############################################
-    //si no se usa el import, saldria "unused import" (no suele salir al lado)
     //import java.math.BigDecimal;
     //import java.net.Socket;
     //si queremos que se obtengan muchos mas elementos (y no uno concreto)
     //import java.net.*; //EL * obtendrá todos los elementos que se encuentren en java.net
+
+    //esto se verá en la parte de "Leer de teclado y mostrarlo por pantalla"
+    import java.util.Scanner;
+
+
+
 public class tutorial {
 
 
@@ -40,7 +44,8 @@ public class tutorial {
      * print con salto de linea: System.out.println(""); O System.out.print("...\n")
     */
     public static void main(String[] args) {
-        System.out.print("holaMundo");
+        System.out.print("holaMundo sin salto de linea");
+        System.out.print("holaMundo con salto de linea");
     }
 
 
@@ -104,7 +109,7 @@ public class tutorial {
 
     public static int suma(int x, int y){
         int z = x + y;
-        return z;                   //se podia haber puesto directamente: return x+y
+        return z;                   //se podia haber puesto directamente: return x + y
     }
 
     public void setCaracterNuevo(char x){
@@ -245,6 +250,19 @@ public class tutorial {
         } catch (IndexOutOfBoundsException e) {
             System.out.println("VALOR FUERA DE INDICE"); //al capturarse la excepcion "e", se mostrará por pantalla lo del println
         }
+    }
+
+
+
+    //##################################### Leer de teclado y mostrarlo por pantalla ######################
+
+    //Para ello usaremos la libreria de java.util.scanner que se encuentra arriba al inicio
+    public static void ejemploScanner(){
+
+        Scanner s = new Scanner(System.in);
+        String palabraEscrita = s.nextLine();
+
+        System.out.println(palabraEscrita);
     }
 
 } //lo que haya debajo de esta linea NO PERTENECERÁ A LA CLASE Y DARÁ ERROR
