@@ -6,6 +6,24 @@
 Esto es un comentario 
 en varias lineas
 """
+############################################# Tipos de datos ######################################
+
+# entero (int)
+edad = 21
+
+# decimal (float)
+pi = 3.14
+
+# cadena (string)
+nombre = "JaviMGG"
+
+# boolean (bool)
+vale_True = True
+
+# variable (var)
+variable = "Esto es una variable"
+
+
 
 ############################################# Numeros #############################################
 a = 17 / 3
@@ -53,6 +71,8 @@ print("5 es igual a 3:", igual)
 print("5 es mayor o igual a 3:", mayor_igual)
 print("5 es menor o igual a 3:", menor_igual)
 print("5 es diferente a 3:", diferente)
+
+
 
 ############################################# Textos #############################################
 a = "Hola"
@@ -106,7 +126,7 @@ print("palabra mezclada:", palabra_mezclada[:4] + palabra[3:])
 ejemplo2 = "viva el betis"
 print("longitud de la cadena:", len(ejemplo2))
 
-############################################# Listas #############################################
+############################################# Listas ###################################################
 array = [1,2,3,4,5,6,7,8,9,0]
 print(array)
 
@@ -148,7 +168,7 @@ print("lista de listas", array4)
 print("segundo elemento de la lista de listas:", array4[1])
 print("primer elemento del segundo elemento de la lista de listas", array4[1][0])
 
-############################################# bucle while #############################################
+############################################# bucle while ####################################
 print ("""\n
     a = 1
     while(a < 7):
@@ -160,7 +180,7 @@ while a < 7:
     print(a)
     a+=1
     
-############################################# bucle for #############################################
+############################################# bucle for ######################################
 print("""\n
 for i in range(1, 4): #tambien se puede sustituir range(1,4) por una lista o un array
     print(i)
@@ -186,7 +206,7 @@ elif x > 3:
 else:
     print("x es 2")
 
-############################################# switch #############################################
+############################################# switch #########################################
 x = 0
 
 print("""\
@@ -215,9 +235,22 @@ print("imprimir los elementos desde 1 hasta 10 yendo de 2 en 2 (incremento)",
 print("mostrar desde 0 hasta 10, NO MUESTRA LA LISTA, MUESTRA LA FUNCION QUE SE HACE, SI QUEREMOS MOSTRAR LA LISTA, TENEMOS QUE USAR list")
 print(range(10))
 
-############################################# definir y llamar funciones #############################################
+
+
+############################################# definir y llamar funciones ####################################
 def funcion(): #definir funcion
     #codigo de la funcion
     print("esta es una funcion")
     
 funcion()     #invocar a la funcion
+
+
+
+############################################# Ejemplo clase/POO #############################################
+# POO = Programacion Orientada a Objetos
+class Coche:
+    def __init__(self, marca):
+        self.marca = marca
+    
+    def conducir(self):
+        print("Conduciendo")
