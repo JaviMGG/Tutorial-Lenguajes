@@ -60,28 +60,28 @@ y=$((y+=a)) #es lo mismo que poner y = y + a
 y=23
 a=11
 
-z=$((y-=a)) #es lo mismo que poner y = y - a
+z=$((y-=a)) #es lo mismo que poner z = y - a
 
 
 #Multiplicacion
 y=23
 a=11
 
-z=$((y*=a)) #es lo mismo que poner y = y * a
+z=$((y*=a)) #es lo mismo que poner z = y * a
 
 
 #Division
 y=23
 a=11
 
-z=$((y/=a)) #es lo mismo que poner y = y / a
+z=y/a       #es lo mismo que poner z = y / a
 
 
 #Modulo
 y=23
 a=11
 
-z=$((y%=a)) #es lo mismo que poner y = y % a
+z=$((y%=a)) #es lo mismo que poner z = y % a
 
 
 #Igualdad (==, !=, >, >=, < , <=)
@@ -350,7 +350,7 @@ done
 
 
 
-############################### Funciones ###############################
+############################### Funciones #################################
 : '
 Ejemplo para comparar (usando sintaxis C):
     void funcion(){
