@@ -145,6 +145,13 @@ int funcionEjemploSuma(int x, int y) //al ser una funcion de tipo distinto a voi
     return z; //Si o si tiene que devolver un entero (o una funcion que devuelva un entero)
 }
 
+int devuelveUno(){return 1;}
+
+int funcionReturnFuncion()
+{
+    return devuelveUno();
+}
+
 
 
 // ################################# Funcion Main ##################################################
@@ -185,4 +192,20 @@ void explicacionPunteros()
     x = *p;
     *p = 0.0;
     p = a; /* &a[0] */
+}
+
+
+
+// ################################# Hilos ##########################################################
+
+#include <pthread.h> //libreria necesaria para crear hilos
+void funcionDeHilos()
+{
+    printf("hola mundo");
+}
+void Hilos()
+{
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, &funcionDeHilos, NULL); //con esto creamos los hilos
+    pthread_join(hilo, NULL); //el hilo principal espera a que terminen antes de continuar con la siguiente instrucción del main
 }
