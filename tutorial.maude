@@ -1,0 +1,49 @@
+--- Esto es un comentario en Maude
+*** ESTO ES UN COMENTARIO DE TITULO
+
+
+    *** Definir un modulo en Maude (SINTAXIS => fmod NOMBRE_MODULO is ... endfm .)
+fmod TUTORIAL is
+
+
+    *** Tipos       (SINTAXIS => sort NombreTipo .)
+    sort One .
+    sort Two Three .
+    sort Natural .
+
+
+    *** Subtipos    (SINTAXIS => subsort Subtipo < Supertipo .)
+    subsort One < Three . --- El sort One es un subtipo de Three (es decir, One es un subconjunto de Three)
+
+
+    *** Operaciones (SINTAXIS => op nombre : TipoEntrada -> TipoSalida .)
+
+    --- Constantes  (SINTAXIS => op nombre : -> Tipo .)
+    op zero : -> Natural . --- La constante zero es un elemento del sort Natural
+
+    --- Operacion prefija (clasica):
+    op suma : Natural Natural -> Natural .
+
+    --- Operacion Mixfix:
+    op _+_ : Natural Natural -> Natural . --- La operacion suma se puede escribir como "x + y" en lugar de "suma(x, y)"
+
+
+    *** Variables   (SINTAXIS => var NombreVariable : Tipo .)
+
+    var X : Natural .
+    var Y Z : Two  .
+
+
+    *** Logica de las funciones (SINTAXIS => eq LADO_IZQUIERDO = LADO_DERECHO .)
+
+    eq 0 + Natural = Natural .
+    eq Natural + 0 = Natural  .
+
+
+    *** Probar codigo
+    --- Para probar el codigo, se pueden usar comandos como "red" o "rew" para reducir expresiones o reescribirlas usando las ecuaciones definidas.
+    red Z + X .         --- Esto reducira la expresion "Z + X" a "X" usando la ecuacion definida anteriormente.
+    red suma(X, Y) .    --- Esto reducira la expresion "suma(X, Y)" a "X + Y" usando la definicion de la operacion suma.
+
+
+endfm
