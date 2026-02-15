@@ -388,7 +388,18 @@ void funcionSobrecargada(std::string x, std::string y){
 
 
 
-//############################################ AMBITO DE LAS VARIABLES##########################################
+//############################################ FUNCIONES LAMBDA #################################################
+
+void funcionLambda(){		
+	auto x = [](string nombre){
+		return "hola, " + nombre + "!";
+	};
+}
+
+
+
+
+//############################################ AMBITO DE LAS VARIABLES ##########################################
 
 /**
  * Variables locales:
