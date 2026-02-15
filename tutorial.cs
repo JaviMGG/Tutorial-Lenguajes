@@ -86,7 +86,7 @@ namespace Name
             Console.WriteLine(array[n]);
 
 
-            //- Diccionarios
+            //- Diccionarios: tiene <clave, valor>
             var diccionario = new Dictionary<string, int>
             {
                 {"Javier", 33 },
@@ -96,6 +96,99 @@ namespace Name
 
             //Mostrar el valor de la clave "Javier"
             Console.WriteLine(diccionario["Javier"]); //mostrará 33
+
+
+            //- Set
+            var set = new HashSet<string> {"Javier", "Javier", "Antonio", "Juan"};
+
+
+            //- Tupla
+            var tupla = ("Juan", "Perico", "Andres");
+            Console.WriteLine(tupla);
+
+            //################################ Condicionales/ifs ###########################
+            int x = 0;
+            if (x == 0)
+            {
+                Console.WriteLine("X vale cero");
+            }else if (x == 2)
+            {
+                Console.WriteLine("X vale dos");
+            }
+            else
+            {
+                Console.WriteLine($"X vale, {x}");
+            }
+
+            //################################ Bucles ######################################
+            //- For
+            const int length = 4;
+            for (int i = 0; i < length; i++)
+            {
+                Console.WriteLine(i);
+            }
+
+
+            //- Foreach
+            foreach (var item in array)
+            {
+                Console.WriteLine(item); //mostrará por pantalla cada elemento del array "array"
+            }
+
+            //- While
+            int i = 0;
+            while (i < length)
+            {
+                Console.WriteLine(i);
+                i++;
+            }
+
+
+            //- Do, while
+            int i = 0;
+            do
+            {
+               Console.WriteLine(i);
+               i++;
+
+            } while (i < length);
+
+            //################################ Funciones ###################################
+            MiFuncion();
+            int x = 2, y = 2;
+            MiFuncionSuma(x,y);
+
+            //################################ Llamar a clases #############################
+            Persona p = new Persona("pepe", 22);
+            Console.WriteLine(p.name);
+
+            p.age = 44;
+            Console.WriteLine(p.age);
+        }
+
+        static void MiFuncion()
+        {
+            Console.WriteLine("Esta funcion está fuera del main");
+        }
+
+        static int MiFuncionSuma(int x, int y)
+        {
+            return x + y;
+        }
+
+        //################################ Clases ##########################################
+        class Persona
+        {
+            //Atributos de una clase
+            public string name {get; set;} //el {get; set;} indica que el atributo "name" se puede obtener o modificar
+            public int age {get; set;}
+
+            //Constructor de una clase
+            public Persona(string name, int age)
+            {
+                this.name = name;
+                this.age = age;
+            }
         }
     }    
 }
