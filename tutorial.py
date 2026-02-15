@@ -6,6 +6,9 @@
 Esto es un comentario 
 en varias lineas
 """
+
+
+
 ############################################# Tipos de datos ######################################
 
 # entero (int)
@@ -15,7 +18,7 @@ edad = 21
 pi = 3.14
 
 # cadena (string)
-nombre = "JaviMGG"
+nombre_Persona = "JaviMGG"
 
 # boolean (bool)
 vale_True = True
@@ -32,19 +35,19 @@ c = 5 * 3 + 2
 d = 5 * (3 + 2)
 print("a:", a, "b:", b, "c:", c, "d:", d)
 
-############ Operadores aritmeticos #################
+# Operadores aritmeticos 
 print("Operadores aritmeticos basicos:")
 print("Suma:", 5 + 3)   
 print("Resta:", 5 - 3)
 print("Multiplicacion:", 5 * 3) 
 
-############ Division normal y entera ###############
+# Division normal y entera
 print("division normal:", a, "division entera:", b)
 
-############ Operadores aritmeticos #################
+# Operadores aritmeticos
 print ("operacion sin parentesis:", c, "operacion con parentesis:", d)
 
-############ Potencia ###############################
+# Potencia 
 potencia = 2 ** 3
 potencia2 = -2 ** 3
 potencia3 = (-2) ** 3
@@ -52,13 +55,13 @@ print( "2 elevado a 3 es:", potencia)
 print( "2 elevado a 3 es:", potencia2)
 print( "2 elevado a 3 es:", potencia3)
 
-############ Numeros negativos ######################
+# Numeros negativos
 negativo = -5
 print("numero negativo:", negativo)
 negativo *= -1
 print("negativo cambiado a positivo:", negativo)
 
-############ Operadores de comparacion ##############
+# Operadores de comparacion
 mayor = 5 > 3
 menor = 5 < 3
 igual = 5 == 3
@@ -95,7 +98,7 @@ print ("\n""""\
        -H hostName
        """)
 
-############ Concatenar strings ##########################
+# Concatenar strings
 a = "hola"
 b = "mundo"
 print("Concatenacion de strings sin espacio entre ellas: ", a + b)
@@ -103,7 +106,7 @@ print("Concatenacion de strings con espacio entre ellas: ", a + " " + b) #tambie
 print("esta cadena larga para concaternar"
       " se concatena con otra cadena larga aunque esten lejos")
 
-############ Separar strings por caracteres ##############
+##### Separar strings por caracteres #####
 #     +---+---+---+---+---+---+
 #     | P | y | t | h | o | n |
 #     +---+---+---+---+---+---+
@@ -122,26 +125,28 @@ print("caracteres fuera de los indices:", palabra[10:15])  # Esto no da error, d
 palabra_mezclada = "Josito"
 print("palabra mezclada:", palabra_mezclada[:4] + palabra[3:])
 
-############ Longitud de los strings ##############
+# Longitud de los strings
 ejemplo2 = "viva el betis"
 print("longitud de la cadena:", len(ejemplo2))
+
+
 
 ############################################# Listas ###################################################
 array = [1,2,3,4,5,6,7,8,9,0]
 print(array)
 
-############ Mostrar elementos separados/contretos de una lista ##############
+# Mostrar elementos separados/contretos de una lista
 print ("imprimir segundo elemento del array: ", array[1])
 print ("imprimir ultimo elemento del array: ", array[-1]) 
 print ("imprimir desde el segundo elemnto hasta el final:\n", array[2:]) # tambien se puede hacer array[-9:]
 
-############ Concatenar elementos de 2 o + listas ############################
+# Concatenar elementos de 2 o + listas 
 array2 = [10,11,12,13,14,15,16,17,18,19]
 print("primer array:", array,
       "\nsegundo array:", array2,
       "\narray concatenado:", (array+array2))
 
-############ Añadir a una lista existente y paso de valor por referencia #####
+# Añadir a una lista existente y paso de valor por referencia 
 array3 = array #AQUI LO QUE PASAMOS ES LA REFERENCIA, NO EL VALOR
 print(array3)
 
@@ -152,7 +157,7 @@ array3.append(83)
 array3.append(5 ** 6)
 print([1,2,3,4,5,6,7,8,9,0], "con elementos añadidos: ", array3)
 
-############ "Rebanar elementos" = sustituir/cambiar valores/eliminar elementos de listas ##############
+# "Rebanar elementos" = sustituir/cambiar valores/eliminar elementos de listas
 print(array)
 array[3:5] = ["3", "4", "11"]
 print(array)
@@ -162,11 +167,13 @@ array[:] = [] #toda la lista
 print(array)
 print("longitud de la lista", len(array))
 
-############ Crear lista de listas ##############
+# Crear lista de listas
 array4 = [array, array2]
 print("lista de listas", array4)
 print("segundo elemento de la lista de listas:", array4[1])
 print("primer elemento del segundo elemento de la lista de listas", array4[1][0])
+
+
 
 ############################################# bucle while ####################################
 print ("""\n
@@ -180,6 +187,8 @@ while a < 7:
     print(a)
     a+=1
     
+
+
 ############################################# bucle for ######################################
 print("""\n
 for i in range(1, 4): #tambien se puede sustituir range(1,4) por una lista o un array
@@ -187,6 +196,8 @@ for i in range(1, 4): #tambien se puede sustituir range(1,4) por una lista o un 
       """)
 for i in range(1, 4): #tambien se puede sustituir range(1,4) por una lista o un array, en ese caso se recorre todo el array/lista
     print(i)
+
+
 
 ############################################# if #############################################
 print("""\
@@ -205,6 +216,8 @@ elif x > 3:
     print("x es mayor que 3")
 else:
     print("x es 2")
+
+
 
 ############################################# switch #########################################
 x = 0
@@ -227,7 +240,7 @@ match x:
     case _:
         print("cualquier valor")
 
-############ Crear una lista a partir de un rango de elementos ##############
+# Crear una lista a partir de un rango de elementos
 print(list(range(4,9)), "habiamos puesto que sea desde 4 hasta 9")
 print("imprimir los elementos desde 1 hasta 10 yendo de 2 en 2 (incremento)",
       list(range(1,10,2)))
@@ -239,6 +252,7 @@ print(range(10))
 
 ############################################# definir y llamar funciones ####################################
 def funcion(): #definir funcion
+    
     #codigo de la funcion
     print("esta es una funcion")
     
