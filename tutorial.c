@@ -205,7 +205,9 @@ void funcionDeHilos()
 }
 void Hilos()
 {
-    pthread_t hilo;
-    pthread_create(&hilo, NULL, &funcionDeHilos, NULL); //con esto creamos los hilos
+    pthread_t hilo; //crea una entidad "hilo"
+
+    pthread_create(&hilo, NULL, &funcionDeHilos, NULL); //con esto creamos los hilos (sus parametros), TODOS ejecutan "funcionDeHilos"
+
     pthread_join(hilo, NULL); //el hilo principal espera a que terminen antes de continuar con la siguiente instrucción del main
 }
