@@ -26,10 +26,17 @@ COMMENT
 
 
 
+############################### Funcion set #####################################
+# set -x => hace que Bash imprima cada comando que ejecuta a la terminal, precedido por un signo +
+# set -e => hará que Bash salga con un error si cualquier comando en el script falle, 
+
+
+
 ############################### Variables #######################################
 #Las variables son "CASE SENSITIVE" (sensibles), es decir, la variable "variable" no es lo mismo que "VARIABLE" ni que "variABLE"
 variable="Esto es una variable"
 variable_numero=23
+variableNueva=$variable #la variable "variableNueva" tendrá el valor de la variable "variable"
 
 
 
@@ -390,3 +397,26 @@ fi
     Si queremos saber cuales son los parametros, usaremos $*
     Si queremos saber cuantos parametros hay, usaremos $#
 '
+
+
+
+############################### Sobreescribir un archivo ###############
+echo "holamundo" > output.txt #lo que haya en "Output.txt" (si existe), se borrará y sustituira por el contenido del echo
+
+
+
+############################### Añadir texto al final del codigo #######
+echo "texto final" >> output.txt #el "texto final" se añadirá al final del archivo "output.txt"
+
+
+
+############################### Redireccionar la salida ################
+ls > output.txt #lo mostrado en pantalla al ejecutar "ls" se guardará en el archivo "output.txt"
+
+
+
+############################### Verificar codigo de salida #############
+# Puedes verificar el código de salida del comando más reciente usando la variable $?
+if [ $? -ne 0 ]; then
+    echo "Hubo un error."
+fi
