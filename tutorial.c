@@ -205,9 +205,40 @@ void funcionDeHilos()
 }
 void Hilos()
 {
+    int data = 0;
     pthread_t hilo; //crea una entidad "hilo"
 
-    pthread_create(&hilo, NULL, &funcionDeHilos, NULL); //con esto creamos los hilos (sus parametros), TODOS ejecutan "funcionDeHilos"
+    pthread_create(&hilo, NULL, &funcionDeHilos, &data); //con esto creamos los hilos (sus parametros), TODOS ejecutan "funcionDeHilos", la variable data es compartida por los hilos
 
     pthread_join(hilo, NULL); //el hilo principal espera a que terminen antes de continuar con la siguiente instrucción del main
+}
+
+
+
+// ################################# Fork ##########################################################
+#include <unistd.h> //libreria necesaria para usar fork
+void funcionDeFork()
+{
+    printf("hola mundo");
+}
+void Fork()
+{
+    /**
+     * El proceso padre y el proceso hijo ejecutan el mismo código a partir de la llamada a fork(), pero con un PID diferente.
+     * El proceso padre recibe el PID del proceso hijo como valor de retorno de fork(), mientras
+     * que el proceso hijo recibe 0 como valor de retorno de fork(). Esto permite que ambos procesos puedan ejecutar código diferente dependiendo de su rol (padre o hijo) después de la llamada a fork().
+     * 
+     * Ejemplo:
+    */
+    pid_t pid = fork(); //crea un proceso hijo, el proceso padre y el proceso hijo ejecutan el mismo codigo a partir de esta linea, pero con un PID diferente (pid del proceso padre es el PID del proceso hijo, y el PID del proceso hijo es 0)
+    if (pid == 0) {
+        // Código del proceso hijo
+        funcionDeFork();
+    } else if (pid > 0) {
+        // Código del proceso padre
+        funcionDeFork();
+    } else {
+        // Error al crear el proceso
+        perror("Error al crear el proceso");
+    }
 }
