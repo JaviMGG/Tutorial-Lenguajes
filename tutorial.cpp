@@ -649,12 +649,113 @@ void prueba_enum(){
 
 
 
+//############################################ CONTENEDORES/VECTOR ##########################################
+#include <vector> //libreria necesaria para usar vectores
+#include <string>
+/**
+ * los vectores permiten añadir o eliminar elementos durante la ejecución del programa. 
+ * (son arrays que crecen solas)
+ * No requiere definir el tamaño en tiempo de compilación.
+ * Evita errores de desbordamiento si se usa correctamente con métodos como size() y at().
+ * Mejor manejo de memoria y mayor seguridad en tiempo de ejecución. 
+ * 
+ * Los indices correspondientes son = {0, 1, 2, 3, 4, 5, 6, ...}
+*/
+
+void funcionVector()
+{
+	vector<int> vectorEnterosVacio; //vector vacio de enteros
+
+	vector<double> vectorReales(5); //vector vacio con 5 espacios vacios (inicializados a 0)
+
+	vector<string> vectorCaracteres = {"Alfa", "Beta", "Gamma", "Delta", "Eco"};
+
+	vectorReales.push_back(3.3); 	//introduce al final el elemento "3.3"
+
+	cout << vectorCaracteres[3] << endl; //muestra por pantalla el elemento que está en la posicion 3 (Delta)
+
+	vectorCaracteres[3] = "nuevo valor"; //modifica el valor de la posicion 3 (lo actualiza)
+
+
+	//para recorrerse los vectores, usamos BUCLES (hay 2 formas de hacerlo):
+	
+	//usando indices
+	for (int i = 0; i < vectorCaracteres.size(); i++)
+	{
+		cout << vectorCaracteres[i] << endl;
+	}
+
+	//usando iteradores
+	for (auto inicio = vectorCaracteres.begin(); inicio != vectorCaracteres.end(); ++inicio)
+	{
+		cout << *inicio << endl;
+	}
+	
+}
+
+
+
+//############################################ DICCIONARIOS/MAP #############################################
+#include <map>
+/**
+ * TODO mapa tiene la siguiente estructura: 
+ * <clave, valor>
+ * 	la clave actua como "indice" para el valor
+*/
+void funcionMap()
+{
+	map<int, string> diccionario; //diccionario vacio
+
+	map<int, string> diccionarioLleno = {{1, "primero"}, {2, "segundo"}, {3, "tercero"}, {4, "cuarto"}};
+
+	diccionarioLleno[3] = "coche";
+
+
+	//para mostrarlo por pantalla:
+	//muestra cada pareja de elementos
+	for (auto& elemento :diccionarioLleno) {
+        std::cout << elemento.first << ": " << elemento.second << "\n"; //el .first es la "clave", el .second es el "valor"
+    }
+
+}
+
+
+
+//############################################ LISTAS/LIST ##################################################
+#include <list>
+/**
+ * A diferencia de std::vector, los elementos no se almacenan en memoria contigua, 
+ * lo que reduce el costo de mover elementos pero hace que el acceso aleatorio sea lento.
+*/
+void funcionList()
+{
+	list<int> listaVacia;
+	
+	list<double> listaQueLlenar;
+
+	listaQueLlenar.push_back(33); 	//inserta al final un 33
+	listaQueLlenar.push_front(44); 	//inserta al inicio un 44
+	listaQueLlenar.push_back(55);
+
+	listaQueLlenar.pop_back(); 		//eliminara el 55
+
+
+	//Para mostrar por pantalla
+	for (double elemento : listaQueLlenar)
+	{
+		cout << elemento << endl; 
+	}
+
+}
+
+
+
 //############################################ FUNCION MAIN y LLAMADA A METODOS ##################################################
 
 /**
  * POR DEFECTO, C++ LO LEE TODO DE ARRIBA A ABAJO, es decir, el main DEBE ESTAR ABAJO DEL TODO
  * Ahora bien, si arriba de main declaramos la funcion con un ; al final, el main BUSCARÁ LA FUNCION, es decir, "mirará" en todas direcciones
- */
+*/
 void funcionNueva();
 
 int suma(int x, int y);
@@ -663,17 +764,19 @@ int main() {
 	int x; //declaracion
 	x = 0; //asignacion
 	/** 
-	funcionDeTipos();
-	funcionNamespace();
-	pruebaAritmeticosSUMA();
-	pruebaAritmeticosRESTA();
-	pruebaAritmeticosMULTIPLICAR();
-	pruebaAritmeticosDIVIDIR();
-	pruebaAritmeticosMODULO();
+		funcionDeTipos();
+		funcionNamespace();
+		pruebaAritmeticosSUMA();
+		pruebaAritmeticosRESTA();
+		pruebaAritmeticosMULTIPLICAR();
+		pruebaAritmeticosDIVIDIR();
+		pruebaAritmeticosMODULO();
+		
+		funcionArrays();
+		funcionesVarias();
+		funcionBucles();
 	*/
-	funcionArrays();
-	funcionesVarias();
-	funcionBucles();
+
 	funcionNueva();		//esta funcion si se ejecutara por estar declarada arriba
 	//funcionNueva2();	//esta funcion NO se ejecutara
 	int a = 1, b = 2, c;
