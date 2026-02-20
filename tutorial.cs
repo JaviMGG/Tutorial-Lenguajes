@@ -164,6 +164,36 @@ namespace Name
 
             p.age = 44;
             Console.WriteLine(p.age);
+
+            //################################ Try/catch ###################################
+            // vital para evitar que el programa se cierre si ocurre un error
+            try
+            {
+                int x = 10, y = 0;
+                int z = x/y;
+                Console.WriteLine(z);
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine("Ocurrió un error genérico: " + ex.Message);
+            }
+            finally 
+            {
+                Console.WriteLine("Esto se ejecuta siempre, haya error o no.");
+            }
+
+            //################################ Programacion asincronica ####################
+            // Se usa 'Task' en lugar de 'void' para métodos que no devuelven nada
+            static async Task DescargarDatosAsync() 
+            {
+                Console.WriteLine("Descargando...");
+                await Task.Delay(2000); // Simula una espera de 2 segundos sin bloquear el PC
+                Console.WriteLine("Descarga completada.");
+            }
         }
 
         static void MiFuncion()
