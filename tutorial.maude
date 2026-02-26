@@ -2,7 +2,7 @@
 *** ESTO ES UN COMENTARIO DE TITULO
 
 
-    *** Definir un modulo en Maude (SINTAXIS => fmod NOMBRE_MODULO is ... endfm .)
+    *** Definir un modulo en Maude funcional (SINTAXIS => fmod NOMBRE_MODULO is ... endfm .)
 fmod TUTORIAL is
 
 
@@ -47,3 +47,10 @@ fmod TUTORIAL is
 
 
 endfm
+
+    *** Definir un modulo de Maude de sistema (SINTAXIS => mod NOMBRE MODULO is ... endm .)
+mod MOD is
+
+---codigo a realizar
+
+endm
