@@ -40,6 +40,10 @@ fmod TUTORIAL is
     eq Natural + 0 = Natural  .
 
 
+    *** Reglas (SINTAXIS => rl [label] LADO_IZQUIERDO => LADO_DERECHO .)
+    ---Me permiten decir como pasar de una parte a otra.
+    rl [label] Term => Term .
+    
     *** Probar codigo
     --- Para probar el codigo, se pueden usar comandos como "red" o "rew" para reducir expresiones o reescribirlas usando las ecuaciones definidas.
     red Z + X .         --- Esto reducira la expresion "Z + X" a "X" usando la ecuacion definida anteriormente.
