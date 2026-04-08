@@ -1,0 +1,11 @@
+[package]
+name = "tutorial"
+version = "0.1.0"
+edition = "2024"
+
+[[bin]]
+path = "src/tutorial.rs"
+name = "tutorial"
+
+[dependencies]
+ferris-says = "0.3.1"
